@@ -14,11 +14,11 @@ export default function Header() {
           <NavLink to="/product" className={({ isActive }) => isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}>
             甜點
           </NavLink>
-          <NavLink to="/login" className={({ isActive }) => isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}>
-            註冊
-          </NavLink>
           <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}>
             登入
+          </NavLink>
+          <NavLink to="/cart" className={({ isActive }) => isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}>
+            購物車
           </NavLink>
         </nav>
       </div>
