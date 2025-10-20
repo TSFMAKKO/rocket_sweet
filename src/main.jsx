@@ -5,6 +5,8 @@ import './index.css'
 import AppLayout from './App.jsx'
 import IndexPage from './pages/Index.jsx'
 import AboutPage from './pages/About.jsx'
+import LoginPage from './pages/Login.jsx'
+import SignupPage from './pages/Signup.jsx'
 
 const router = createHashRouter([
   {
@@ -12,6 +14,8 @@ const router = createHashRouter([
     children: [
       { path: '/', element: <IndexPage /> },
       { path: '/about', element: <AboutPage /> },
+      { path: '/login', element: <LoginPage /> },
+      { path: '/signup', element: <SignupPage /> },
     ],
   },
 ])

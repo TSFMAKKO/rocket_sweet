@@ -9,6 +9,8 @@ function AppLayout() {
           <nav className="flex items-center gap-3 text-sm">
             <Link className="text-slate-700 hover:text-blue-600" to="/">Index</Link>
             <Link className="text-slate-700 hover:text-blue-600" to="/about">About</Link>
+            <Link className="text-slate-700 hover:text-blue-600" to="/login">Login</Link>
+            <Link className="text-slate-700 hover:text-blue-600" to="/signup">Signup</Link>
           </nav>
         </div>
       </header>
