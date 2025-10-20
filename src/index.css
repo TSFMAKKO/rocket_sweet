@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* 可以在這裡加上任意自訂樣式或 @theme 調整（Tailwind v4 支援 CSS-first config） */
+/* @theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+} */
