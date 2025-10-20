@@ -10,7 +10,7 @@ export default function Footer() {
           rel="noreferrer"
           className="hover:text-gray-700"
         >
-          GitHub
+          GitHub1111111111
         </a>
       </div>
     </footer>
