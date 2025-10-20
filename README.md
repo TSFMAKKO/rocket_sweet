@@ -27,8 +27,10 @@ npm run preview
 
 ## 路由
 
-- `/` Index 頁面
-- `/about` About 頁面
+本專案使用 Hash 路由（`createHashRouter`），適合 GitHub Pages 等靜態託管：
+
+- `#/` Index 頁面
+- `#/about` About 頁面
 
 ## 樣式
 

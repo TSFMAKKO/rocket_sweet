@@ -1,12 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import AppLayout from './App.jsx'
 import IndexPage from './pages/Index.jsx'
 import AboutPage from './pages/About.jsx'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element: <AppLayout />,
     children: [
