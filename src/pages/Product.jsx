@@ -61,7 +61,7 @@ const PRODUCT_DATA = {
       button: "加入購物車",
     },
   ],
-  pagination: { current_page: 2, total_pages: 3 },
+  pagination: { current_page: 1, total_pages: 3 },
 };
 
 // active=所有甜點 
@@ -116,28 +116,30 @@ function ProductCard({ p }) {
         />
       </div>
 
-      <div className="flex justify-between items-center px-4 py-3 border-t border-[#EAF0ED]">
+      <div className="flex justify-between items-center px-[16px] py-[12px] border-t border-[#EAF0ED]">
         <div className="text-gray-700">{p.name}</div>
         <div className="text-gray-900">
           {p.currency} {p.price}
         </div>
       </div>
 
-      <button className="w-full bg-[#EAF0ED] hover:bg-[#dbe4dd] text-[#3F5D45] py-3">
+      <button className="w-full bg-[#EAF0ED] hover:bg-[#dbe4dd] text-[#3F5D45] py-[12px]">
         {p.button}
       </button>
     </div>
   );
 }
 
+// 傳入當前頁數current 總頁數total
 function Pagination({ current, total }) {
+  // 產生頁碼陣列 [1,2,3]
   const pages = useMemo(
     () => Array.from({ length: total }, (_, i) => i + 1),
     [total]
   );
   return (
     <nav
-      className="flex items-center justify-end mt-6"
+      className="flex items-center justify-end max-sm:justify-center mt-[24px] mb-[24px]"
       aria-label="Pagination"
     >
       <button
@@ -197,7 +199,7 @@ export default function ProductPage() {
         />
 
         <div>
-          <div className="flex flex-wrap gap-[20px]">
+          <div className="flex flex-wrap gap-[20px] max-sm:px-[32px]">
             {/* 迴圈把資料印出來 */}
             {filtered.map((p, idx) => (
               <div key={p.name + idx} className="w-full md:max-w-[calc(50%-10px)]">
