@@ -48,7 +48,7 @@ const PRODUCT_DATA = {
       name: "焦糖馬卡龍",
       price: 450,
       currency: "NT$",
-      tag: "本日精選",
+      tag: "",
       image: "photo-1504855328839-2f4baf9e0fd7.avif",
       button: "加入購物車",
     },
@@ -64,26 +64,32 @@ const PRODUCT_DATA = {
   pagination: { current_page: 2, total_pages: 3 },
 };
 
+// active=所有甜點 
+// items=filters(所有) { name: "所有甜點", count: 48 }, { name: "本日精選", count: 10 },
 function FilterList({ title, items, active, onChange }) {
   return (
-    <aside className="w-full md:w-[240px] shrink-0 bg-white">
+    <aside className="w-full md:max-w-[300px] bg-white">
       <div className="bg-[#3F5D45] text-white text-center py-3 rounded-t">
         {title}
       </div>
       <ul className="border border-[#EAF0ED] divide-y">
-        {items.map((it) => {
-          const isActive = active === it.name;
+        {/*  */}
+        {items.map((item) => {
+          // active=所有甜點
+          const isActive = active === item.name;
           return (
-            <li key={it.name}>
+            <li key={item.name}>
               <button
                 type="button"
-                onClick={() => onChange?.(it.name)}
+                // 每個li 點下去 把自己的name傳給 onChange=setActiveFilter(設定activeFilter)
+                onClick={() => onChange(item.name)}
                 className={`${
+                  // 被選中的加上背景顏色(例如所有甜點)
                   isActive ? "bg-[#EAF0ED]" : "bg-white"
                 } w-full flex items-center justify-between px-4 py-3 text-left`}
               >
-                <span>{it.name}</span>
-                <span className="text-gray-500">({it.count})</span>
+                <span>{item.name}</span>
+                <span className="text-gray-500">({item.count})</span>
               </button>
             </li>
           );
@@ -97,15 +103,16 @@ function ProductCard({ p }) {
   return (
     <div className="border border-[#EAF0ED] bg-white">
       <div className="relative">
+        {/* 有本日精選之類的就印出來 */}
         {p.tag ? (
-          <span className="absolute left-3 top-3 bg-[#3F5D45] text-white text-xs px-2 py-1 rounded-sm">
+          <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] left-3 top-3 bg-[#3F5D45] text-white text-xs px-2 py-1 rounded-sm">
             {p.tag}
           </span>
         ) : null}
         <img
           src={BASE_URL + p.image}
           alt={p.name}
-          className="w-full h-[240px] object-cover"
+          className="w-full h-[315px] object-cover"
         />
       </div>
 
@@ -130,19 +137,20 @@ function Pagination({ current, total }) {
   );
   return (
     <nav
-      className="flex items-center justify-center gap-2 mt-6"
+      className="flex items-center justify-end mt-6"
       aria-label="Pagination"
     >
       <button
-        className="px-3 py-2 border border-[#EAF0ED] disabled:opacity-50"
+        className="flex justify-center items-center w-[60px] h-[60px] border border-[#EAF0ED] disabled:opacity-50"
         disabled={current <= 1}
       >
-        ‹
+        <img src={BASE_URL + "arrow_left.png"} alt="" />
+        {/* ‹ */}
       </button>
       {pages.map((n) => (
         <button
           key={n}
-          className={`px-3 py-2 border border-[#EAF0ED] ${
+          className={`flex justify-center items-center w-[60px] h-[60px] border border-[#EAF0ED] ${
             n === current ? "bg-[#3F5D45] text-white" : "bg-white"
           }`}
         >
@@ -150,10 +158,11 @@ function Pagination({ current, total }) {
         </button>
       ))}
       <button
-        className="px-3 py-2 border border-[#EAF0ED] disabled:opacity-50"
+        className="flex justify-center items-center w-[60px] h-[60px] border border-[#EAF0ED] disabled:opacity-50"
         disabled={current >= total}
       >
-        ›
+        {/* › */}
+         <img src={BASE_URL + "arrow_right.png"} alt="" />
       </button>
     </nav>
   );
@@ -161,14 +170,15 @@ function Pagination({ current, total }) {
 
 export default function ProductPage() {
   const [activeFilter, setActiveFilter] = useState(
+    // 設定初始的過濾條件(所有甜點)  { name: "所有甜點", count: 48 }
     PRODUCT_DATA.filters[0].name
   );
 
-  // 目前為靜態資料，不過保留過濾邏輯以利後續擴充
+  // 目前為靜態資料(之後從這邊過濾)
   const filtered = PRODUCT_DATA.products;
 
   return (
-    <section className="w-full max-w-[1024px] mx-auto px-4 md:px-6 py-6">
+    <section className="">
       {/*  */}
       <img
         src={BASE_URL + "photo-1512484457149-266d165a4eca.avif"}
@@ -181,14 +191,16 @@ export default function ProductPage() {
         <FilterList
           title={PRODUCT_DATA.category}
           items={PRODUCT_DATA.filters}
+          // active=所有甜點
           active={activeFilter}
           onChange={setActiveFilter}
         />
 
         <div>
           <div className="flex flex-wrap gap-[20px]">
+            {/* 迴圈把資料印出來 */}
             {filtered.map((p, idx) => (
-              <div key={p.name + idx} className="basis-full md:max-w-[calc(50%-10px)]">
+              <div key={p.name + idx} className="w-full md:max-w-[calc(50%-10px)]">
                 <ProductCard p={p} />
               </div>
             ))}
