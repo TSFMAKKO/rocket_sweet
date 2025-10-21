@@ -56,9 +56,15 @@ export default function Footer() {
 
       {/* 灰底 */}
       <div className="bg-[#EAF0ED] flex justify-between max-sm:flex-col max-sm:gap-y-[30px] py-[38px] max-sm:py-[30px]">
-        <div className="max-w-[784px] mx-auto flex">
-          <div>1</div>
-          <div>2</div>
+        <div className="max-w-[784px] mx-auto flex justify-between">
+          <div>
+            <div>上</div>
+            <div>下</div>
+          </div>
+          <div className="flex">
+            <div>圖右</div>
+            <div>圖左</div>
+          </div>
 
         </div>
 
