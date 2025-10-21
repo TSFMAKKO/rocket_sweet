@@ -20,7 +20,7 @@ export default function Header() {
                         <NavLink to="/product" className={({ isActive }) => (isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600') + ' py-[20px]'}>
                             甜點
                         </NavLink>
-                        <NavLink to="/signup" className={({ isActive }) => `${isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'} py-[20px]`}>
+                        <NavLink to="/login" className={({ isActive }) => `${isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'} py-[20px]`}>
                             登入
                         </NavLink>
                     </div>
