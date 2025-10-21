@@ -6,6 +6,10 @@ import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import Cart from '../pages/Cart'
 import NotFound from '../pages/NotFound'
+import Transport from '../pages/Transport'
+import Payment from '../pages/Payment'
+import Invoice from '../pages/Invoice'
+import Complete from '../pages/Complete'
 
 const router = createHashRouter([
     {
@@ -17,6 +21,10 @@ const router = createHashRouter([
             { path: 'login', element: <Login /> },
             { path: 'signup', element: <Signup /> },
             { path: 'cart', element: <Cart /> },
+            { path: 'checkout/transport', element: <Transport /> },
+            { path: 'checkout/payment', element: <Payment /> },
+            { path: 'checkout/invoice', element: <Invoice /> },
+            { path: 'checkout/complete', element: <Complete /> },
             { path: '*', element: <NotFound /> },
         ],
     },
