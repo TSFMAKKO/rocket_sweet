@@ -1,17 +1,32 @@
+import { Form } from "react-router-dom"
+const BASE_URL = import.meta.env.BASE_URL || '/'
+console.log("BASE_URL:", BASE_URL);
+
+import LogoFromPublic from "./LogoFromPublic.jsx"
+
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="mt-auto border-t border-gray-200 bg-white/60">
-      <div className="mx-auto max-w-[1296px] w-full px-4 py-6 text-xs text-gray-500 flex items-center justify-between">
-        <span>© {year} Rocket Sweet</span>
-        <a
-          href="https://github.com/TSFMAKKO/rocket_sweet"
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-gray-700"
-        >
-          GitHub1111111111
-        </a>
+    <footer className="bg-[#3F5D45] text-[#EAF0ED] w-full">
+      <div className="mx-auto  max-w-[1024px] flex justify-between max-sm:flex-col max-sm:gap-y-[30px] py-[38px] max-sm:py-[30px]">
+        <div className="flex w-full justify-center items-center gap-x-[20px]">
+          <div aria-label="Rocket Sweet Logo">
+            <LogoFromPublic src="logo-light.svg" className={`h-[38px] w-[38px] text-[#EAF0ED]`} />
+          </div>
+          <div className="text-[24px] ">訂閱你我的甜蜜郵件</div>
+        </div>
+
+        <Form method="post" className=" bg-[#fff] flex items-center max-w-[380px] max-sm:mx-auto w-full">
+          <div className="flex justify-center items-center py-[16px] ml-[20px]">
+            <img src={`${BASE_URL}mail-24px.png`} alt="" srcset="" />
+          </div>
+          <input className="block w-full text-[20px] py-[13px] px-[12px] text-[#000] border-none  focus:outline-none focus:ring-0 focus:border-transparent" type="text" placeholder="email" />
+          <div className="flex justify-center items-center py-[20px] px-[24px] bg-[#FFE180]">
+            <img src={`${BASE_URL}arrow_forward-24px.png`} alt="" srcset="" />
+          </div>
+
+        </Form>
+
       </div>
     </footer>
   )

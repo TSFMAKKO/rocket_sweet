@@ -7,7 +7,7 @@ export default function Header() {
 
     const [isOpen, setIsOpen] = useState(false)
     return (
-        <header className="mx-auto max-w-[1280px] w-full px-[12px] py-3">
+        <header className="mx-auto max-w-[1024px] w-full px-[12px] py-3">
             <div className=" flex items-center justify-between max-sm:hidden">
                 <NavLink to="/" className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight py-[20px] ">
                     <img src={BASE_URL + 'logo-all-dark.svg'} alt="Rocket Sweet" className="h-[38px] w-auto" />
