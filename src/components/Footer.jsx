@@ -11,7 +11,7 @@ export default function Footer() {
       {/* 綠底 */}
       <div className="bg-[#3F5D45] text-[#EAF0ED] flex justify-between max-sm:flex-col max-sm:gap-y-[30px] py-[38px] max-sm:py-[30px]">
         <div className="max-w-[784px] w-full mx-auto flex max-sm:flex-col max-sm:gap-y-[30px]">
-          <div className="flex w-full items-center gap-x-[20px]">
+          <div className="flex w-full items-center max-sm:justify-center gap-x-[20px]">
             <div aria-label="Rocket Sweet Logo" className="flex">
               <LogoFromPublic
                 src="logo-light.svg"
@@ -44,7 +44,7 @@ export default function Footer() {
       </div>
 
       {/* 灰底 */}
-      <div className="bg-[#EAF0ED] flex justify-between max-sm:flex-col max-sm:gap-y-[30px] py-[38px] max-sm:py-[30px]">
+      <div className="bg-[#EAF0ED] flex justify-between max-sm:flex-col max-sm:gap-y-[30px] py-[38px] max-sm:py-[30px] max-sm:px-[20px]">
         <div className="max-w-[784px] w-full mx-auto flex justify-between">
           <div>
             <div>
@@ -64,7 +64,7 @@ export default function Footer() {
       </div>
 
       {/* ig fb */}
-      <div className="bg-[#EAF0ED] w-full">
+      <div className="bg-[#EAF0ED] w-full max-sm:px-[20px]">
         <div className=" max-w-[784px] mx-auto flex justify-between items-end pb-[30px]">
           <div className="flex gap-x-[8px]">
             <div className=""><img className="w-[32px]" src={`${BASE_URL}ic-line@.svg`} alt="line" /></div>

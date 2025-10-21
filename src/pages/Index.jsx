@@ -4,7 +4,8 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
 
 export default function IndexPage() {
   return (
-    <section className="space-y-4">
+    //  max-sm:px-[20px]
+    <section className="">
       <h1 className="text-3xl font-bold tracking-tight">Index</h1>
       <p className="text-slate-600">這是首頁</p>
       <img

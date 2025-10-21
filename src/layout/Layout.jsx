@@ -9,7 +9,7 @@ export default function Layout() {
       <main className=" mx-auto max-w-[940px] w-full">
         <Outlet />
       </main>
-      <Footer />
+      <Footer className="" />
     </div>
   )
 }
