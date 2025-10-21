@@ -47,22 +47,28 @@ export default function Footer() {
       <div className="bg-[#EAF0ED] flex justify-between max-sm:flex-col max-sm:gap-y-[30px] py-[38px] max-sm:py-[30px]">
         <div className="max-w-[784px] w-full mx-auto flex justify-between">
           <div>
-            <div>上</div>
-            <div>下</div>
+            <div>
+              <img src={`${BASE_URL}logotype-sm-dark.svg`} alt="" />
+            </div>
+            <div>
+              <p>07-1234-5678 </p>
+              <p>sweetaste@email.com</p>
+              <p>800 高雄市新興區幸福路 520 號</p>
+            </div>
           </div>
           <div className="flex">
-            <div>圖右</div>
-            <div>圖左</div>
+            <div><img src={`${BASE_URL}logotype-sm-dark.svg`} alt="" /></div>
+            <div><img src={`${BASE_URL}logotype-sm-dark.svg`} alt="" /></div>
           </div>
         </div>
       </div>
 
       {/* ig fb */}
       <div className="bg-[#EAF0ED] w-full">
-        <div className=" max-w-[784px] mx-auto flex justify-between">
-          <div className="flex">
-            <div>ig</div>
-            <div>fb</div>
+        <div className=" max-w-[784px] mx-auto flex justify-between items-end pb-[30px]">
+          <div className="flex gap-x-[8px]">
+            <div className=""><img className="w-[32px]" src={`${BASE_URL}ic-line@.svg`} alt="line" /></div>
+            <div className=""><img className="w-[32px]" src={`${BASE_URL}ic-facebook.svg`} alt="fb" /></div>
           </div>
 
           <div>© 2018 Sweetaste* All Rights Reserved</div>
