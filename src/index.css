@@ -4,3 +4,14 @@
 /* @theme {
   --font-sans: ui-sans-serif, system-ui, sans-serif;
 } */
+
+:root {
+  /* Brand color - 森林綠 */
+  --brand-forest: #3F5D45;
+}
+
+/* Tailwind v4 顏色 token：定義後可透過 text-brand-forest / bg-brand-forest / border-brand-forest 使用 */
+@theme {
+  --color-brand-forest: #3F5D45;
+}
+
