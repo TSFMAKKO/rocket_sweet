@@ -66,7 +66,7 @@ const PRODUCT_DATA = {
 
 function FilterList({ title, items, active, onChange }) {
   return (
-    <aside className="w-full max-w-[240px] bg-white">
+    <aside className="w-full md:w-[240px] shrink-0 bg-white">
       <div className="bg-[#3F5D45] text-white text-center py-3 rounded-t">
         {title}
       </div>
@@ -176,8 +176,8 @@ export default function ProductPage() {
         className="w-full h-auto mb-[60px]"
       />
 
-      {/*  */}
-      <div className="grid grid-cols-1 md:grid-cols-[240px,1fr] gap-6">
+      {/* Filter + Products */}
+      <div className="flex flex-col md:flex-row gap-x-[20px]">
         <FilterList
           title={PRODUCT_DATA.category}
           items={PRODUCT_DATA.filters}
@@ -186,9 +186,11 @@ export default function ProductPage() {
         />
 
         <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex flex-wrap gap-[20px]">
             {filtered.map((p, idx) => (
-              <ProductCard key={p.name + idx} p={p} />
+              <div key={p.name + idx} className="basis-full md:max-w-[calc(50%-10px)]">
+                <ProductCard p={p} />
+              </div>
             ))}
           </div>
 
