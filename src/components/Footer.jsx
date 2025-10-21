@@ -21,25 +21,27 @@ export default function Footer() {
             <div className="text-[24px]">訂閱你我的甜蜜郵件</div>
           </div>
 
-          <Form
-            method="post"
-            className="bg-[#fff] flex items-center max-w-[380px] max-sm:mx-auto w-full"
-          >
-            <div className="flex justify-center items-center py-[16px] ml-[20px]">
-              <img src={`${BASE_URL}mail-24px.png`} alt="mail" />
-            </div>
-            <input
-              className="block w-full text-[20px] py-[13px] px-[12px] text-[#000] border-none focus:outline-none focus:ring-0 focus:border-transparent"
-              type="text"
-              placeholder="email"
-            />
-            <div className="flex justify-center items-center py-[20px] px-[24px] bg-[#FFE180]">
-              <img
-                src={`${BASE_URL}arrow_forward-24px.png`}
-                alt="arrow forward"
+          <div className="w-full bg-[#3F5D45] max-sm:px-[20px]">
+            <Form
+              method="post"
+              className="bg-[#fff] flex items-center max-w-[380px] max-sm:mx-auto w-full"
+            >
+              <div className="flex justify-center items-center py-[16px] ml-[20px]">
+                <img src={`${BASE_URL}mail-24px.png`} alt="mail" />
+              </div>
+              <input
+                className="block w-full text-[20px] py-[13px] px-[12px] text-[#000] border-none focus:outline-none focus:ring-0 focus:border-transparent"
+                type="text"
+                placeholder="email"
               />
-            </div>
-          </Form>
+              <div className="flex justify-center items-center py-[20px] px-[24px] bg-[#FFE180]">
+                <img
+                  src={`${BASE_URL}arrow_forward-24px.png`}
+                  alt="arrow forward"
+                />
+              </div>
+            </Form>
+          </div>
         </div>
       </div>
 
@@ -57,8 +59,12 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex">
-            <div><img src={`${BASE_URL}logotype-sm-dark.svg`} alt="" /></div>
-            <div><img src={`${BASE_URL}logotype-sm-dark.svg`} alt="" /></div>
+            <div>
+              <img src={`${BASE_URL}logotype-sm-dark.svg`} alt="" />
+            </div>
+            <div>
+              <img src={`${BASE_URL}logotype-sm-dark.svg`} alt="" />
+            </div>
           </div>
         </div>
       </div>
@@ -67,8 +73,20 @@ export default function Footer() {
       <div className="bg-[#EAF0ED] w-full max-sm:px-[20px]">
         <div className=" max-w-[784px] mx-auto flex justify-between items-end pb-[30px]">
           <div className="flex gap-x-[8px]">
-            <div className=""><img className="w-[32px]" src={`${BASE_URL}ic-line@.svg`} alt="line" /></div>
-            <div className=""><img className="w-[32px]" src={`${BASE_URL}ic-facebook.svg`} alt="fb" /></div>
+            <div className="">
+              <img
+                className="w-[32px]"
+                src={`${BASE_URL}ic-line@.svg`}
+                alt="line"
+              />
+            </div>
+            <div className="">
+              <img
+                className="w-[32px]"
+                src={`${BASE_URL}ic-facebook.svg`}
+                alt="fb"
+              />
+            </div>
           </div>
 
           <div>© 2018 Sweetaste* All Rights Reserved</div>
