@@ -6,7 +6,7 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="mx-auto max-w-[940px] w-full px-[12px] py-3 z-10">
+    <header className="mx-auto max-w-[940px] w-full px-[12px] py-3 z-999">
       <div className=" flex items-center justify-between max-sm:hidden ">
         <NavLink
           to="/"
