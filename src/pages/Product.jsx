@@ -139,7 +139,7 @@ function Pagination({ current, total }) {
   );
   return (
     <nav
-      className="flex items-center justify-end max-sm:justify-center mt-[24px] mb-[24px]"
+      className="flex items-center justify-end max-sm:justify-center mt-[24px]"
       aria-label="Pagination"
     >
       <button
