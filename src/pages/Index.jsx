@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 export default function IndexPage() {
   return (
     <section className="space-y-4">

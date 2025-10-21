@@ -12,7 +12,7 @@ export default function Header() {
                 <NavLink to="/" className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight py-[20px] ">
                     <img src={BASE_URL + 'logo-all-dark.svg'} alt="Rocket Sweet" className="h-[38px] w-auto" />
                 </NavLink>
-                <nav className="flex gap-x-[80px] text-sm items-center text-[20px] leading-[1.5">
+                <nav className="flex gap-x-[80px] text-sm items-center text-[20px] leading-[1.5]">
                     <div className='flex gap-x-[60px]'>
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600') + ' py-[20px]'}>
                             首頁
@@ -23,6 +23,7 @@ export default function Header() {
                         <NavLink to="/login" className={({ isActive }) => `${isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'} py-[20px]`}>
                             登入
                         </NavLink>
+                     
                     </div>
                     <NavLink to="/cart" className={({ isActive }) => (isActive ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600') + ' py-[20px]'}>
                         <img src={BASE_URL + 'shopping_cart.png'} alt="購物車" className="h-[38px] w-auto" />
@@ -55,11 +56,23 @@ export default function Header() {
                             首頁
                         </NavLink>
 
-                        <NavLink to="/" className="py-[20px] hover:text-blue-600 block w-full text-center">
+                        <NavLink to="/product" className="py-[20px] hover:text-blue-600 block w-full text-center">
                             甜點
                         </NavLink>
-                        <NavLink to="/" className="py-[20px] hover:text-blue-600 block w-full text-center">
+                        <NavLink to="/login" className="py-[20px] hover:text-blue-600 block w-full text-center">
                             登入
+                        </NavLink>
+                        <NavLink to="/checkout/transport" className="py-[20px] hover:text-blue-600 block w-full text-center">
+                            運送
+                        </NavLink>
+                        <NavLink to="/checkout/payment" className="py-[20px] hover:text-blue-600 block w-full text-center">
+                            付款
+                        </NavLink>
+                        <NavLink to="/checkout/invoice" className="py-[20px] hover:text-blue-600 block w-full text-center">
+                            電子發票
+                        </NavLink>
+                        <NavLink to="/checkout/complete" className="py-[20px] hover:text-blue-600 block w-full text-center">
+                            付款成功
                         </NavLink>
                     </div>
                 </nav>

@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.BASE_URL || '/'
 import LogoFromPublic from "./LogoFromPublic.jsx"
 
 export default function Footer() {
-  const year = new Date().getFullYear()
+  // const year = new Date().getFullYear()
   return (
     <footer className="w-full">
 
