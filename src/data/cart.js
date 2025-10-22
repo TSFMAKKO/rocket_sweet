@@ -44,7 +44,6 @@ export const SHIPPING_FEE = 300;
 
 export function delHandler(id) {
   console.log("刪除商品:",id);
-  // eslint-disable-next-line no-const-assign
   CART_ITEMS = CART_ITEMS.filter(item => {
     console.log("item:",item);
     
