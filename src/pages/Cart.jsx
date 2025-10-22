@@ -1,5 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { CART_ITEMS, SHIPPING_FEE, computeSummary } from "../data/cart";
+import {
+  CART_ITEMS,
+  SHIPPING_FEE,
+  computeSummary,
+  getLineTotal,
+  
+  
+} from "../data/cart";
 console.log("CART_ITEMS:", CART_ITEMS);
 console.log("SHIPPING_FEE:", SHIPPING_FEE);
 
@@ -32,11 +39,55 @@ export default function Cart() {
       <div className="flex relative flex-col lg:flex-row gap-x-[20px]">
         {/* 左側：彈性區塊，手機/平板會撐滿寬度，桌機維持約 620px */}
         <div className="flex-1 min-w-0 lg:w-[620px]">
-          <div className="font-[600] text-[24px] flex justify-center items-center bg-[#EAF0ED] py-[16px]">
+          <div className="font-[600] text-[24px] flex justify-center items-center bg-[#EAF0ED] py-[16px] mb-[33px]">
             購物車
           </div>
-          <div>商品列表</div>
+
+          {/* 商品列表 CART_ITEMS */}
+          {/* {
+              id: "macaron-1",
+              name: "焦糖馬卡龍",
+              unitPrice: 450,
+              currency: "NT$",
+              qty: 2,
+              image: BASE_URL + "photo-1514517220017-8ce97a34a7b6.avif",
+            }, */}
+          <div>
+            {CART_ITEMS.map((item) => (
+              <div
+                key={item.id}
+                className="flex justify-between py-2 border-b border-gray-200"
+              >
+                <div className="">
+                  <img
+                    className="object-cover w-[110px] h-[110px]"
+                    src={item?.image}
+                    alt={item?.name}
+                  />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <p>{item.name}</p>
+                  <p>
+                    {item?.currency} {item?.unitPrice.toLocaleString()}
+                  </p>
+                </div>
+
+                <div className="flex justify-center items-center">
+                  <span className="block p-[12px] border border-[#3F5D45]">{'<'}</span>
+                  <span className="block p-[12px] border border-[#3F5D45]">{item.qty}</span>
+                  <span className="block p-[12px] border border-[#3F5D45]">{'>'}</span>
+                </div>
+
+                <div className="flex flex-col justify-center">
+                  {item?.currency} {getLineTotal(item).toLocaleString()}
+                </div>
+
+                <div className="flex flex-col justify-center">刪除</div>
+              </div>
+            ))}
+          </div>
         </div>
+
         {/* 右側：使用可重用的 OrderSummary 元件（props: summary） */}
         <OrderSummary summary={summary} />
       </div>
