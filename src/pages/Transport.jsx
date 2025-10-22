@@ -12,12 +12,12 @@ export default function Transport() {
   const summary = useMemo(() => computeSummary(CART_ITEMS, SHIPPING_FEE), []);
   return (
     <section className="w-full">
-      <NavLink
+      {/* <NavLink
         to="/checkout/payment"
         className="block text-center bg-[#FFE180] text-[#3F5D45] py-2 font-medium"
       >
         下一步
-      </NavLink>
+      </NavLink> */}
       {/* <h1 className="text-2xl font-semibold">運送</h1> */}
       {/* <p>這裡是運送 /checkout/transport 頁面。</p> */}
       {/* <NavLink
@@ -34,13 +34,105 @@ export default function Transport() {
       </NavLink> */}
       <div className="w-[780px] mx-auto flex flex-col lg:flex-row gap-x-[20px] gap-y-[16px]">
         {/* 左側：商品清單（唯讀顯示） */}
-        <div className="flex-1 min-w-0 lg:w-[460px]"></div>
+  <div className="flex-1 relative min-w-0 lg:w-[460px] py-[30px] px-[40px] pb-[90px] bg-[#3F5D45] text-[#EAF0ED]">
+          <div className="flex justify-between mb-[40px]">
+            <div className="font-[600] text-[36px]">運送</div>
+            <div>進度條</div>
+          </div>
+
+          <div>
+            {/* 表單 */}
+            <form className="space-y-5">
+              {/* 姓氏 / 名字 */}
+              <div>
+                <div className="grid grid-cols-2 gap-4 mb-2">
+                  <label className="text-[16px]" htmlFor="lastName">姓氏</label>
+                  <label className="text-[16px]" htmlFor="firstName">名字</label>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="王"
+                    className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                    autoComplete="family-name"
+                  />
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="小明"
+                    className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                    autoComplete="given-name"
+                  />
+                </div>
+              </div>
+
+              {/* 電話 */}
+              <div>
+                <label className="block mb-2 text-[16px]" htmlFor="phone">電話</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="0912-345-678"
+                  className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                  autoComplete="tel"
+                />
+              </div>
+
+              {/* 地址 */}
+              <div>
+                <label className="block mb-2 text-[16px]" htmlFor="city">地址</label>
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <select
+                    id="city"
+                    name="city"
+                    className="w-full bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                    defaultValue="高雄市"
+                  >
+                    <option>高雄市</option>
+                    <option>台北市</option>
+                    <option>新北市</option>
+                    <option>台中市</option>
+                  </select>
+                  <select
+                    id="district"
+                    name="district"
+                    className="w-full bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                    defaultValue="新興區"
+                  >
+                    <option>新興區</option>
+                    <option>苓雅區</option>
+                    <option>左營區</option>
+                    <option>三民區</option>
+                  </select>
+                </div>
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  placeholder="幸福路 520 號"
+                  className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                  autoComplete="street-address"
+                />
+              </div>
+            </form>
+          </div>
+          <NavLink
+            to="/checkout/payment"
+            className="block absolute w-full left-[0px] bottom-0 text-center bg-[#FFE180] text-[#3F5D45] text-[24px] font-[600] py-2"
+          >
+            下一步
+          </NavLink>
+        </div>
         {/* 右側：訂單摘要 */}
         <div className="lg:w-[300px] w-full">
           <OrderSummary summary={summary} />
 
-          <div className="font-[600] text-[24px] flex justify-center items-center bg-[#EAF0ED] py-[16px] mb-[10px]">
-            購物車
+          <div className="font-[600] text-[24px] flex justify-center items-center bg-[#EAF0ED] text-[#8DA291] py-[16px] mb-[10px]">
+            購物清單
           </div>
           <div>
             {CART_ITEMS.map((item) => (
@@ -50,7 +142,7 @@ export default function Transport() {
               >
                 <div>
                   <img
-                    className="object-cover w-[110px] h-[110px]"
+                    className="object-cover w-[120px] h-[80px]"
                     src={item?.image}
                     alt={item?.name}
                   />
@@ -76,7 +168,7 @@ export default function Transport() {
 function OrderSummary({ summary }) {
   return (
     // { summary.subtotal.toLocaleString() && <p>123<p/>}
-    <aside className="w-full lg:w-[300px] shrink-0 bg-[#EAF0ED] text-[#8DA291] p-4 mb-[20px]">
+    <aside className="w-full lg:w-[300px] shrink-0 bg-[#EAF0ED] text-[#8DA291] mb-[20px]">
       {/* 標題 */}
       <h3 className="text-[24px] font-[600] text-center py-[16px] border-b border-[#EAF0ED]">
         訂單摘要
@@ -84,8 +176,8 @@ function OrderSummary({ summary }) {
 
       {/* 金額明細 */}
 
-      <div className="text-sm flex flex-col gap-y-[8px] py-[16px] font-[300] text-[16px] text-[#EAF0ED]">
-        <div className="flex justify-between text-[#8DA291]">
+      <div className="text-sm flex flex-col gap-y-[8px] py-[16px] font-[300] text-[16px] px-4 bg-[#fff] border border-[#EAF0ED]">
+        <div className="flex justify-between text-[#8DA291] ">
           <span>小計</span>
           <span>
             {summary.currency} {summary.subtotal.toLocaleString()}
