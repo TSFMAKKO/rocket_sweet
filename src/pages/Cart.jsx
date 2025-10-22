@@ -37,33 +37,42 @@ export default function Cart() {
           </div>
           <div>商品列表</div>
         </div>
-        {/* 右側：shrink-0固定寬度，不會被壓扁 */}
-        <div className="w-full lg:w-[300px] shrink-0 bg-[#3F5D45] text-[#EAF0ED] ">
-          <div>
-            小計：{summary.currency} {summary.subtotal.toLocaleString()}
-          </div>
-          <div>
-            運費：{summary.currency} {summary.shipping.toLocaleString()}
-          </div>
-          <div className="font-semibold">
-            總計：{summary.currency} {summary.total.toLocaleString()}
-          </div>
-          <div>
-            <NavLink
-              to="/checkout/transport"
-              className={({ isActive }) =>
-                `${
-                  isActive
-                    ? "text-blue-600 font-medium"
-                    : "text-gray-700 hover:text-blue-600"
-                } py-[20px]`
-              }
-            >
-              運送
-            </NavLink>
-          </div>
-        </div>
+        {/* 右側：使用可重用的 OrderSummary 元件（props: summary） */}
+        <OrderSummary summary={summary} />
       </div>
     </section>
+  );
+}
+
+// 簡單的 OrderSummary 元件，放在同一檔案裡便於新手理解
+function OrderSummary({ summary }) {
+  return (
+    <aside className="w-full lg:w-[300px] shrink-0 bg-[#3F5D45] text-[#EAF0ED] p-4">
+      {/* 標題 */}
+      <h3 className="text-lg font-semibold text-center mb-4">訂單摘要</h3>
+
+      {/* 金額明細 */}
+      <div className="text-sm space-y-2">
+        <div className="flex justify-between">
+          <span>小計</span>
+          <span>{summary.currency} {summary.subtotal.toLocaleString()}</span>
+        </div>
+        <div className="flex justify-between">
+          <span>運費</span>
+          <span>{summary.currency} {summary.shipping.toLocaleString()}</span>
+        </div>
+        <div className="flex justify-between font-semibold pt-2">
+          <span>總計</span>
+          <span>{summary.currency} {summary.total.toLocaleString()}</span>
+        </div>
+      </div>
+
+      {/* 結帳按鈕（用 NavLink 前往下一步） */}
+      <div className="mt-4">
+        <NavLink to="/checkout/transport" className="block text-center bg-[#FFE180] text-[#3F5D45] py-2 font-medium">
+          結帳
+        </NavLink>
+      </div>
+    </aside>
   );
 }
