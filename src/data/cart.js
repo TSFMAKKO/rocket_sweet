@@ -13,7 +13,7 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
 //   image: string         // 完整圖片 URL（已拼 BASE_URL）
 // }
 
-export const CART_ITEMS = [
+export let CART_ITEMS = [
   {
     id: "macaron-1",
     name: "焦糖馬卡龍",
@@ -27,7 +27,7 @@ export const CART_ITEMS = [
     name: "焦糖馬卡龍",
     unitPrice: 450,
     currency: "NT$",
-    qty: 2,
+    qty: 3,
     image: BASE_URL + "photo-1473256599800-b48c7c88cd7e.avif",
   },
   {
@@ -42,6 +42,17 @@ export const CART_ITEMS = [
 
 export const SHIPPING_FEE = 300;
 
+export function delHandler(id) {
+  console.log("刪除商品:",id);
+  // eslint-disable-next-line no-const-assign
+  CART_ITEMS = CART_ITEMS.filter(item => {
+    console.log("item:",item);
+    
+    return item.id !== id
+  });
+  console.log("剩餘商品:", CART_ITEMS);
+  
+}
 // 計算金額摘要（小計、運費、總計）
 export function computeSummary(items = CART_ITEMS, shipping = SHIPPING_FEE) {
   const currency = items[0]?.currency ?? "NT$";

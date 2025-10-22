@@ -1,18 +1,32 @@
+import { useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   CART_ITEMS,
   SHIPPING_FEE,
   computeSummary,
   getLineTotal,
-  
-  
 } from "../data/cart";
-console.log("CART_ITEMS:", CART_ITEMS);
-console.log("SHIPPING_FEE:", SHIPPING_FEE);
 
 export default function Cart() {
-  //計算金額摘要（小計、運費、總計）
-  const summary = computeSummary(CART_ITEMS, SHIPPING_FEE);
+  // 使用 state 管理購物車項目，這樣刪除或改數量才能更新畫面
+  const [items, setItems] = useState(CART_ITEMS);
+
+  // 計算摘要（依 items 更新）
+  const summary = useMemo(() => computeSummary(items, SHIPPING_FEE), [items]);
+
+  // 改變數量（若要禁止小於 1，可用 Math.max）
+  function changeQty(id, diff) {
+    setItems((prev) =>
+      prev.map((it) =>
+        it.id === id ? { ...it, qty: Math.max(1, (it.qty || 1) + diff) } : it
+      )
+    );
+  }
+
+  // 刪除項目（更新 state）
+  function delHandler(id) {
+    setItems((prev) => prev.filter((it) => it.id !== id));
+  }
   return (
     <section className="mx-auto w-full max-w-[920px] px-[42px]">
       {/* <h1 className="text-2xl font-semibold">購物車</h1> */}
@@ -36,7 +50,7 @@ export default function Cart() {
         <div className="font-semibold">總計：{summary.currency} {summary.total.toLocaleString()}</div>
       </div> */}
 
-      <div className="flex relative flex-col lg:flex-row gap-x-[20px]">
+      <div className="flex flex-col lg:flex-row gap-x-[20px]">
         {/* 左側：彈性區塊，手機/平板會撐滿寬度，桌機維持約 620px */}
         <div className="flex-1 min-w-0 lg:w-[620px]">
           <div className="font-[600] text-[24px] flex justify-center items-center bg-[#EAF0ED] py-[16px] mb-[33px]">
@@ -53,7 +67,7 @@ export default function Cart() {
               image: BASE_URL + "photo-1514517220017-8ce97a34a7b6.avif",
             }, */}
           <div>
-            {CART_ITEMS.map((item) => (
+            {items.map((item) => (
               <div
                 key={item.id}
                 className="flex justify-between py-2 border-b border-gray-200"
@@ -73,16 +87,33 @@ export default function Cart() {
                 </div>
 
                 <div className="flex justify-center items-center">
-                  <span className="block p-[12px] border border-[#3F5D45]">{'<'}</span>
-                  <span className="block p-[12px] border border-[#3F5D45]">{item.qty}</span>
-                  <span className="block p-[12px] border border-[#3F5D45]">{'>'}</span>
+                  <button
+                    className="block px-3 py-2 border border-[#3F5D45]"
+                    onClick={() => changeQty(item.id, -1)}
+                    aria-label={`減少 ${item.name}`}
+                  >
+                    −
+                  </button>
+                  <div className="block px-4">{item.qty}</div>
+                  <button
+                    className="block px-3 py-2 border border-[#3F5D45]"
+                    onClick={() => changeQty(item.id, 1)}
+                    aria-label={`增加 ${item.name}`}
+                  >
+                    +
+                  </button>
                 </div>
 
                 <div className="flex flex-col justify-center">
                   {item?.currency} {getLineTotal(item).toLocaleString()}
                 </div>
 
-                <div className="flex flex-col justify-center">刪除</div>
+                <div
+                  className="flex flex-col justify-center"
+                  onClick={() => delHandler(item.id)}
+                >
+                  刪除
+                </div>
               </div>
             ))}
           </div>
@@ -98,13 +129,15 @@ export default function Cart() {
 // 簡單的 OrderSummary 元件，放在同一檔案裡便於新手理解
 function OrderSummary({ summary }) {
   return (
-    <aside className="w-full lg:w-[300px] shrink-0 bg-[#3F5D45] text-[#EAF0ED] p-4">
+    // { summary.subtotal.toLocaleString() && <p>123<p/>}
+    <aside className="w-full h-[300px] max-sm:h-auto lg:w-[300px] shrink-0 bg-[#3F5D45] text-[#EAF0ED] p-4">
       {/* 標題 */}
       <h3 className="text-[24px] font-[600] text-center py-[16px] border-b border-[#EAF0ED]">
         訂單摘要
       </h3>
 
       {/* 金額明細 */}
+
       <div className="text-sm flex flex-col gap-y-[8px] py-[16px] font-[300] text-[16px] text-[#EAF0ED]">
         <div className="flex justify-between">
           <span>小計</span>
