@@ -16,7 +16,7 @@ export default function IndexPage() {
       </div>
 
         {/* <!-- 本日精選 --> */}
-      <div class="flex w-[780px] mt-[-89px] mx-auto gap-x-[0.66px] h-64 text-center text-[24px] font-[300] relative overflow-hidden">
+      <div class="flex max-w-[780px] w-full mt-[-89px] max-sm:mt-0 mx-auto gap-x-[0.66px] h-64 text-center text-[24px] font-[300] relative overflow-hidden">
         <div class="flex-1 flex justify-center items-center relative">
           <img
             src={`${BASE_URL}p-1.png`}
