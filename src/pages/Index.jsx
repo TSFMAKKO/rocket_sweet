@@ -56,8 +56,8 @@ export default function IndexPage() {
       {/* 為啥一定要做/要吃甜點 */}
       <div className="max-w-[1024px] mb-[105px] h-[420px]  bg-[#EAF0ED] flex w-full  px-[42px]">
         {/*  */}
-        <div className="flex w-full  justify-between gap-x-[80px] relative">
-          <div className="relative top-[-20px]">
+        <div className="flex w-full mb-[80px] justify-between gap-x-[80px] relative">
+          <div className="mt-[-20px]">
             <img
               className="w-[460px] h-[460px] object-cover"
               src={`${BASE_URL}photo-1519730722595-a5ff788dea4d.avif`}
@@ -67,7 +67,7 @@ export default function IndexPage() {
           </div>
 
           <div className=" py-[70px]">123</div>
-          <div className="mb-[80px] w-[90px] flex justify-center">
+          <div className="mt-[-60px] w-[90px] flex justify-center">
             <img
               className="w-full h-full object-fit"
               src={`${BASE_URL}lg-為什麼選擇了做甜點.svg`}
@@ -79,7 +79,7 @@ export default function IndexPage() {
       </div>
 
       {/* 想吃甜點是不需要理由的 */}
-      <div className="mb-[80px] flex justify-center">
+      <div className="mb-[80px]  flex justify-center">
         <img
           className="w-[90px] h-full object-cover"
           src={`${BASE_URL}lg-想吃甜點是不需要理由的.svg`}
