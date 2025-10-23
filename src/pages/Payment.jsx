@@ -11,7 +11,7 @@ export default function Payment() {
   // 在元件內計算訂單摘要（此頁不變更商品內容，故直接以 CART_ITEMS 計算）
   const summary = useMemo(() => computeSummary(CART_ITEMS, SHIPPING_FEE), []);
   return (
-    <section className="w-full">
+    <section className="w-full max-lg:mb-[-24px] ">
       <div className="max-w-[780px] mx-auto flex flex-col lg:flex-row gap-x-[20px] gap-y-[16px]">
         {/* 左側：商品清單（唯讀顯示） */}
         <div className="flex-1 relative min-w-0 lg:w-[460px] py-[30px] px-[40px] pb-[90px] bg-[#3F5D45] text-[#EAF0ED]">
@@ -151,7 +151,7 @@ export default function Payment() {
           </NavLink>
         </div>
         {/* 右側：訂單摘要 */}
-        <div className="max-sm:hidden lg:w-[300px] w-full">
+        <div className="max-lg:hidden lg:w-[300px] w-full">
           <OrderSummary summary={summary} />
 
           <div className="font-[600] text-[24px] flex justify-center items-center bg-[#EAF0ED] text-[#3F5D45] py-[16px] mb-[10px]">

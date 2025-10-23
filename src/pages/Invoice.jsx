@@ -140,10 +140,10 @@ export default function Invoice() {
             </form>
           </div>
           <NavLink
-            to="/checkout/payment"
+            to="/checkout/complete"
             className="block absolute w-full left-[0px] bottom-0 text-center bg-[#FFE180] text-[#3F5D45] text-[24px] font-[600] py-2"
           >
-            下一步
+            確認結帳
           </NavLink>
         </div>
         {/* 右側：訂單摘要 */}
