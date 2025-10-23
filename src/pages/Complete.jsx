@@ -25,7 +25,7 @@ export default function Complete() {
         </div>
         <h1 className="text-[44px] tracking-[4px] font-[600] mb-[50px]">付款成功</h1>
         <NavLink
-          to="/products"
+          to="/product"
           className="inline-block text-[24px] py-[16px] px-[100px] text-center bg-[#FFE180] text-[#3F5D45] font-medium"
         >
           繼續逛逛
