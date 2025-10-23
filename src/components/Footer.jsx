@@ -71,8 +71,8 @@ export default function Footer() {
 
       {/* ig fb */}
       <div className="bg-[#EAF0ED] w-full max-sm:px-[20px]">
-        <div className=" max-w-[784px] mx-auto flex justify-between items-end pb-[30px]">
-          <div className="flex gap-x-[8px]">
+        <div className=" max-w-[784px] mx-auto flex max-sm:flex-col justify-between items-end max-sm:items-start pb-[30px]">
+          <div className="flex gap-x-[8px] mb-[30px] max-sm:mb-[23px]">
             <div className="w-[32px]">
               <img
                 className="w-[32px] object-cover"
