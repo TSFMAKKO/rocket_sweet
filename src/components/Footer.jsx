@@ -73,23 +73,25 @@ export default function Footer() {
       <div className="bg-[#EAF0ED] w-full max-sm:px-[20px]">
         <div className=" max-w-[784px] mx-auto flex justify-between items-end pb-[30px]">
           <div className="flex gap-x-[8px]">
-            <div className="">
+            <div className="w-[32px]">
               <img
-                className="w-[32px]"
+                className="w-[32px] object-cover"
                 src={`${BASE_URL}ic-line@.svg`}
                 alt="line"
               />
             </div>
             <div className="">
               <img
-                className="w-[32px]"
+                className="w-[32px] object-cover"
                 src={`${BASE_URL}ic-facebook.svg`}
                 alt="fb"
               />
             </div>
           </div>
 
-          <div>© 2018 Sweetaste* All Rights Reserved</div>
+          <div className="w-[275px] flex justify-end items-end">
+            <div className="w-full">© 2025 Sweetaste* All Rights Reserved</div>
+          </div>
         </div>
       </div>
     </footer>

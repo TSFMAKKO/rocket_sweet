@@ -1,3 +1,4 @@
+const BASE_URL = import.meta.env.BASE_URL || "/";
 export default function LoginPage() {
   return (
 <div className="flex flex-col md:flex-row w-full max-w-4xl mx-auto rounded overflow-hidden shadow-lg">
@@ -7,9 +8,15 @@ export default function LoginPage() {
 
     {/* <!-- 手機版社群登入 --> */}
     <div className="bg-[#EAF0ED] flex md:hidden justify-around mb-6 p-3 rounded gap-x-[2px] ">
-      <button className="text-gray-700 bg-white font-[600] py-[10px] block max-w-full w-full">facebook</button>
-      <button className="text-gray-700 bg-white font-[600] py-[10px] block max-w-full w-full">Google</button>
-      <button className="text-gray-700 bg-white font-[600] py-[10px] block max-w-full w-full">YAHOO!</button>
+      <button className="text-gray-700 bg-white font-[600] py-[10px] block max-w-full w-full">
+        <img src={`${BASE_URL}ic-facebook-logotype.svg`} alt="facebook" />
+      </button>
+      <button className="text-gray-700 bg-white font-[600] py-[10px] block max-w-full w-full">
+        <img src={`${BASE_URL}ic-google.svg`} alt="Google" />
+      </button>
+      <button className="text-gray-700 bg-white font-[600] py-[10px] block max-w-full w-full">
+        <img src={`${BASE_URL}ic-yahoo.svg`} alt="YAHOO!" />
+      </button>
     </div>
 
     <div className="flex flex-col gap-y-[16px] mb-[13px]">

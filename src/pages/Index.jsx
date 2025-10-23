@@ -134,8 +134,6 @@ export default function IndexPage() {
         </div>
       </div>
 
-
-
       {/* 為啥一定要做/要吃甜點 Mobile */}
       <div className="sm:hidden mb-[30px]">
         <div className="flex flex-col items-center justify-center">
