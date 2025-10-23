@@ -12,26 +12,6 @@ export default function Transport() {
   const summary = useMemo(() => computeSummary(CART_ITEMS, SHIPPING_FEE), []);
   return (
     <section className="w-full">
-      {/* <NavLink
-        to="/checkout/payment"
-        className="block text-center bg-[#FFE180] text-[#3F5D45] py-2 font-medium"
-      >
-        下一步
-      </NavLink> */}
-      {/* <h1 className="text-2xl font-semibold">運送</h1> */}
-      {/* <p>這裡是運送 /checkout/transport 頁面。</p> */}
-      {/* <NavLink
-        to="/checkout/payment"
-        className={({ isActive }) =>
-          `${
-            isActive
-              ? "text-blue-600 font-medium"
-              : "text-gray-700 hover:text-blue-600"
-          } py-[20px]`
-        }
-      >
-        付款
-      </NavLink> */}
       <div className="max-w-[780px] mx-auto flex flex-col lg:flex-row gap-x-[20px] gap-y-[16px]">
         {/* 左側：商品清單（唯讀顯示） */}
         <div className="flex-1 relative min-w-0 lg:w-[460px] py-[30px] px-[40px] pb-[90px] bg-[#3F5D45] text-[#EAF0ED]">
