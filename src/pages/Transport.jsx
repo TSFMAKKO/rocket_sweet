@@ -18,29 +18,15 @@ export default function Transport() {
           <div className="flex justify-between mb-[24px]">
             <div className="font-[600] text-[36px]">運送</div>
             <div className="flex justify-center items-center h-[54px] mb-[32px]">
-
-              {/* 打勾 */}
-              <span className="w-[20px] h-[20px] border bg-[#3F5D45] rounded-full flex justify-center items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="#EAF0ED"
-                  className="w-4 h-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </span>
-              {/* 直線 */}
-              <span className="w-[65px] border-b"></span>
               {/* 圓圈(進行中) */}
               <span className="w-[20px] h-[20px] border border-[#fff]  rounded-full flex justify-center items-center">
                 <span className="w-[14px] h-[14px] bg-[#fff]  rounded-full"></span>
+              </span>
+              {/* 直線 */}
+              <span className="w-[65px] border-b"></span>
+              {/* 圓圈(未進行) */}
+              <span className="w-[20px] h-[20px] border border-[#fff]  rounded-full flex justify-center items-center">
+                {/* <span className="w-[14px] h-[14px] bg-[#fff]  rounded-full"></span> */}
               </span>
 
               {/* 直線  */}
