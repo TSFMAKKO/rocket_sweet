@@ -144,7 +144,7 @@ export default function Payment() {
             </form>
           </div>
           <NavLink
-            to="/checkout/payment"
+            to="/checkout/invoice"
             className="block absolute w-full left-[0px] bottom-0 text-center bg-[#FFE180] text-[#3F5D45] text-[24px] font-[600] py-2"
           >
             下一步
@@ -220,16 +220,7 @@ function OrderSummary({ summary }) {
         </div>
       </div>
 
-      {/* 結帳按鈕（用 NavLink 前往下一步） */}
-      <div className="mt-4 relative max-sm:bottom-[-16px] max-sm:left-[-16px] max-sm:w-[calc(100%+32px)] font-[600] text-[24px]">
-        {/* 用navlink 導航到invoice */}
-        <NavLink
-          to="/checkout/invoice"
-          className="block absolute w-full left-[0px] bottom-0 text-center bg-[#FFE180] text-[#3F5D45] text-[24px] font-[600] py-2"
-        >
-          下一步
-        </NavLink>
-      </div>
+
     </aside>
   );
 }
