@@ -17,6 +17,8 @@ export default function Invoice() {
         <div className="flex-1 relative min-w-0 lg:w-[460px] py-[30px] px-[40px] pb-[90px] bg-[#3F5D45] text-[#EAF0ED]">
           <div className="flex justify-between mb-[24px]">
             <div className="font-[600] text-[36px]">發票</div>
+
+            {/*  */}
             <div className="flex justify-center items-center h-[54px] mb-[32px]">
               {/* 打勾 */}
               <span className="w-[20px] h-[20px] border bg-[#3F5D45] rounded-full flex justify-center items-center">
@@ -37,104 +39,70 @@ export default function Invoice() {
               </span>
               {/* 直線 */}
               <span className="w-[65px] border-b"></span>
-              {/* 圓圈(進行中) */}
-              <span className="w-[20px] h-[20px] border border-[#fff]  rounded-full flex justify-center items-center">
-                <span className="w-[14px] h-[14px] bg-[#fff]  rounded-full"></span>
+              {/* 打勾 */}
+              <span className="w-[20px] h-[20px] border bg-[#3F5D45] rounded-full flex justify-center items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#EAF0ED"
+                  className="w-4 h-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
               </span>
 
               {/* 直線  */}
               <span className="w-[65px] border-b"></span>
-              {/* 圓圈(未進行) */}
+              {/* 圓圈(進行中) */}
               <span className="w-[20px] h-[20px] border border-[#fff]  rounded-full flex justify-center items-center">
-                {/* <span className="w-[14px] h-[14px] bg-[#fff]  rounded-full"></span> */}
+                <span className="w-[14px] h-[14px] bg-[#fff]  rounded-full"></span>
               </span>
             </div>
+          </div>
+
+
+          {/* 電子發票/郵寄發票 */}
+          <div className="flex w-full justify-center items-center font-[600] text-[24px] h-[54px] mb-[32px]">
+            <div className="flex-1 text-center py-[24px] border bg-[#EAF0ED] text-[#3F5D45]">電子發票</div>
+            <div className="flex-1 text-center py-[24px] border">郵寄發票</div>
           </div>
 
           <div className="">
             {/* 表單 */}
             <form className="space-y-5">
-              {/* 姓氏 / 名字 */}
+              {/* email */}
               <div>
-                <div className="grid grid-cols-2 gap-4 mb-2">
-                  <label className="text-[16px]" htmlFor="lastName">
-                    姓氏
-                  </label>
-                  <label className="text-[16px]" htmlFor="firstName">
-                    名字
-                  </label>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    placeholder="王"
-                    className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
-                    autoComplete="family-name"
-                  />
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    placeholder="小明"
-                    className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
-                    autoComplete="given-name"
-                  />
-                </div>
-              </div>
-
-              {/* 電話 */}
-              <div>
-                <label className="block mb-2 text-[16px]" htmlFor="phone">
-                  電話
+                <label className="block mb-2 text-[16px]" htmlFor="email">
+                  電子郵件信箱
                 </label>
                 <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="0912-345-678"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="example@example.com"
                   className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
-                  autoComplete="tel"
+                  autoComplete="email"
                 />
               </div>
 
-              {/* 地址 */}
+              {/* 統一編號(選填) */}
               <div>
-                <label className="block mb-2 text-[16px]" htmlFor="city">
-                  地址
+                <label className="block mb-2 text-[16px]" htmlFor="taxId">
+                  統一編號(選填)
                 </label>
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <select
-                    id="city"
-                    name="city"
-                    className="w-full bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
-                    defaultValue="高雄市"
-                  >
-                    <option>高雄市</option>
-                    <option>台北市</option>
-                    <option>新北市</option>
-                    <option>台中市</option>
-                  </select>
-                  <select
-                    id="district"
-                    name="district"
-                    className="w-full bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
-                    defaultValue="新興區"
-                  >
-                    <option>新興區</option>
-                    <option>苓雅區</option>
-                    <option>左營區</option>
-                    <option>三民區</option>
-                  </select>
-                </div>
                 <input
-                  id="address"
-                  name="address"
+                  id="taxId"
+                  name="taxId"
                   type="text"
-                  placeholder="幸福路 520 號"
+                  placeholder="12345678"
                   className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
-                  autoComplete="street-address"
+                  autoComplete="off"
                 />
               </div>
             </form>
@@ -215,21 +183,6 @@ function OrderSummary({ summary }) {
           </span>
         </div>
       </div>
-
-      {/* 結帳按鈕（用 NavLink 前往下一步） */}
-      {/* <div className="mt-4 relative max-sm:bottom-[-16px] max-sm:left-[-16px] max-sm:w-[calc(100%+32px)] font-[600] text-[24px]"></div> */}
-      <NavLink
-        to="/checkout/complete"
-        className={({ isActive }) =>
-          `${
-            isActive
-              ? "text-blue-600 font-medium"
-              : "text-gray-700 hover:text-blue-600"
-          } py-[20px]`
-        }
-      >
-        付款成功
-      </NavLink>
     </aside>
   );
 }
