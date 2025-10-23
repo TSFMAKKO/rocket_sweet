@@ -56,8 +56,8 @@ export default function IndexPage() {
       {/* 為啥一定要做/要吃甜點 */}
       <div className="max-w-[1024px] mb-[105px] h-[420px]  bg-[#EAF0ED] flex w-full  px-[42px]">
         {/*  */}
-        <div className="flex w-full mb-[80px] justify-between gap-x-[80px] relative">
-          <div className="mt-[-20px]">
+        <div className="flex w-full mb-[80px] justify-between relative">
+          <div className="mt-[-20px] w-[460px]">
             <img
               className="w-[460px] h-[460px] object-cover"
               src={`${BASE_URL}photo-1519730722595-a5ff788dea4d.avif`}
@@ -66,12 +66,68 @@ export default function IndexPage() {
             />
           </div>
 
-          <div className=" py-[70px]">123</div>
+          <div className="py-[70px] flex h-[280px] gap-x-[64px] font-[300] text-[16px]">
+            {/* 右側縱書文案 */}
+            <div className="h-full w-[56px] text-[#8DA291]">
+              <p className=" h-[290px] [writing-mode:vertical-rl] [text-orientation:upright] leading-[36px] tracking-[0px] text-[16px]">
+                是非成敗轉頭空，滾滾長江東逝水，白髮漁樵江渚上，古今多少事，都付笑談中。
+              </p>
+            </div>
+            {/* 左側縱書文案 */}
+            <div className="h-full text-[#8DA291]">
+              <p className=" h-[299px] [writing-mode:vertical-rl] [text-orientation:upright] leading-[36px] tracking-[0px] text-[16px]">
+                青山依舊在，幾度夕陽紅。慣看秋月春風。一壺濁酒喜相逢，浪花淘盡英雄。是非成敗轉頭空，滾滾長江東逝水，白髮漁樵江渚上，古今多少事，都付笑談中。
+              </p>
+            </div>
+          </div>
+
+          {/* 右側圖片 */}
           <div className="mt-[-60px] w-[90px] flex justify-center">
             <img
               className="w-full h-full object-fit"
               src={`${BASE_URL}lg-為什麼選擇了做甜點.svg`}
               alt="lg-為什麼選擇了做甜點.svg"
+              srcset=""
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 為啥一定要做/要吃甜點2 */}
+      <div className="max-w-[1024px] mb-[105px] h-[420px]  bg-[#EAF0ED] flex w-full  px-[42px]">
+        {/*  */}
+        <div className="flex w-full mb-[80px] justify-between relative">
+          {/* 文字 */}
+          <div className="py-[70px] flex h-[280px] gap-x-[64px] font-[300] text-[16px]">
+            {/* 右側縱書文案 */}
+            <div className="h-full w-[56px] text-[#8DA291]">
+              <p className=" h-[290px] [writing-mode:vertical-rl] [text-orientation:upright] leading-[36px] tracking-[0px] text-[16px]">
+                是非成敗轉頭空，滾滾長江東逝水，白髮漁樵江渚上，古今多少事，都付笑談中。
+              </p>
+            </div>
+            {/* 左側縱書文案 */}
+            <div className="h-full text-[#8DA291]">
+              <p className=" h-[299px] [writing-mode:vertical-rl] [text-orientation:upright] leading-[36px] tracking-[0px] text-[16px]">
+                青山依舊在，幾度夕陽紅。慣看秋月春風。一壺濁酒喜相逢，浪花淘盡英雄。是非成敗轉頭空，滾滾長江東逝水，白髮漁樵江渚上，古今多少事，都付笑談中。
+              </p>
+            </div>
+          </div>
+          {/* 右側圖片為什麼一定要吃甜點 */}
+          <div className="mt-[-60px] w-[90px] flex justify-center">
+            <img
+              className="w-full h-full object-fit"
+              src={`${BASE_URL}lg-為什麼一定要吃甜點.svg`}
+              alt="lg-為什麼一定要吃甜點.svg"
+              srcset=""
+            />
+          </div>
+
+          {/* 柳丁 */}
+          <div className="mt-[-20px] w-[460px]">
+            <img
+              className="w-[460px] h-[460px] object-cover"
+              src={`${BASE_URL}photo-1501432781167-c0ccfd492297.avif`}
+              alt="photo-1501432781167-c0ccfd492297.avif"
               srcset=""
             />
           </div>
