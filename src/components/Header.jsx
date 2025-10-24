@@ -118,7 +118,7 @@ export default function Header() {
           >
             <NavLink
               to="/"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(false)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               首頁
@@ -126,46 +126,46 @@ export default function Header() {
 
             <NavLink
               to="/product"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(false)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               甜點
             </NavLink>
             <NavLink
               to="/login"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(false)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               登入
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/checkout/transport"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(false)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               運送
-            </NavLink>
-            <NavLink
+            </NavLink> */}
+            {/* <NavLink
               to="/checkout/payment"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(false)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               付款
-            </NavLink>
-            <NavLink
+            </NavLink> */}
+            {/* <NavLink
               to="/checkout/invoice"
               onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               電子發票
-            </NavLink>
-            <NavLink
+            </NavLink> */}
+            {/* <NavLink
               to="/checkout/complete"
               onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               付款成功
-            </NavLink>
+            </NavLink> */}
           </div>
         </nav>
       </div>
