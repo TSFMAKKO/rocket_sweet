@@ -114,7 +114,7 @@ export default function Header() {
           <div
             className={`${
               isOpen ? "" : "hidden"
-            } bg-[#fff] flex max-sm:flex-col justify-center gap-y-[0px] absolute w-[calc(100%)] h-[calc(100vh-62px)] top-[100%] left-0 text-[20px] tracking-[150%] font-medium text-gray-700`}
+            } bg-[#fff] flex max-sm:flex-col justify-center gap-y-[0px] absolute w-[calc(100%)] top-[100%] left-0 text-[20px] tracking-[150%] font-medium text-gray-700`}
           >
             <NavLink
               to="/"
