@@ -6,7 +6,7 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="mx-auto max-w-[940px] w-full px-[12px] py-3 z-999">
+    <header className="mx-auto max-w-[940px] relative w-full px-[12px] py-3 z-999">
       <div className=" flex items-center justify-between max-sm:hidden ">
         <NavLink
           to="/"
@@ -73,7 +73,7 @@ export default function Header() {
       {/* 手機版  */}
       {/* <div className={`${isOpen ? "block" : "hidden"} mt-2`}  */}
       <div className={`flex items-center justify-between sm:hidden `}>
-        <nav className="flex w-full justify-between text-sm relative bg-[#fff]">
+        <nav className="flex w-full justify-between text-sm bg-[#fff]">
           <div
             onClick={() => setIsOpen(!isOpen)}
             className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-[red]"
@@ -109,14 +109,16 @@ export default function Header() {
               className="h-[38px] w-auto"
             />
           </NavLink>
+
           {/* 手機版選單 */}
           <div
             className={`${
-              isOpen ? "flex" : "hidden"
-            } bg-[#fff] flex max-sm:flex-col w-full justify-center gap-y-[0px] absolute top-[100%] text-[20px] tracking-[150%] font-medium text-gray-700`}
+              isOpen ? "" : "hidden"
+            } bg-[#fff] flex max-sm:flex-col justify-center gap-y-[0px] absolute w-[calc(100%)] h-[calc(100vh-62px)] top-[100%] left-0 text-[20px] tracking-[150%] font-medium text-gray-700`}
           >
             <NavLink
               to="/"
+              onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               首頁
@@ -124,36 +126,42 @@ export default function Header() {
 
             <NavLink
               to="/product"
+              onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               甜點
             </NavLink>
             <NavLink
               to="/login"
+              onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               登入
             </NavLink>
             <NavLink
               to="/checkout/transport"
+              onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               運送
             </NavLink>
             <NavLink
               to="/checkout/payment"
+              onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               付款
             </NavLink>
             <NavLink
               to="/checkout/invoice"
+              onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               電子發票
             </NavLink>
             <NavLink
               to="/checkout/complete"
+              onClick={() => setIsOpen(!isOpen)}
               className="py-[20px] hover:text-blue-600 block w-full text-center"
             >
               付款成功
