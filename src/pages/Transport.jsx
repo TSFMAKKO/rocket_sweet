@@ -83,6 +83,7 @@ export default function Transport() {
                   placeholder="0912-345-678"
                   className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
                   autoComplete="tel"
+                  style={{ boxSizing: 'border-box', padding: '12px', WebkitPadding: '12px' }}
                 />
               </div>
 
@@ -95,7 +96,7 @@ export default function Transport() {
                   <select
                     id="city"
                     name="city"
-                    className="w-full bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                     className="w-full appearance-none bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
                     defaultValue="高雄市"
                   >
                     <option>高雄市</option>
@@ -106,7 +107,7 @@ export default function Transport() {
                   <select
                     id="district"
                     name="district"
-                    className="w-full bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                     className="w-full appearance-none bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
                     defaultValue="新興區"
                   >
                     <option>新興區</option>
@@ -120,7 +121,7 @@ export default function Transport() {
                   name="address"
                   type="text"
                   placeholder="幸福路 520 號"
-                  className="w-full bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                   className="w-full appearance-none bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
                   autoComplete="street-address"
                 />
               </div>
