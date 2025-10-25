@@ -15,3 +15,20 @@
   --color-brand-forest: #3F5D45;
 }
 
+
+/* ---- Form control normalization (Safari) ---- */
+/* 移除 Safari/瀏覽器原生外觀，確保 padding / 自訂樣式可生效 */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+select,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0; /* 避免 iOS 內建圓角影響 */
+  background-clip: padding-box; /* 確保背景在 padding 內裁切，Safari 更穩定 */
+}
+
