@@ -190,8 +190,10 @@ export default function ProductPage() {
       </div>
 
       <div className="sm:hidden absolute top-[40px] right-[40px] flex justify-center">
+         {/* font-size: clamp(1.4rem, 3vw, 1.6rem); */}
+         {/* h-[clamp(250px, 0.5vw, 400px)] */}
         <img
-          className="h-[calc(250px+1vw)] object-cover aspect-auto"
+          className="h-[180px] object-cover aspect-auto"
           src={`${BASE_URL}sm-想吃甜點是不需要理由的.svg`}
           alt="sm-想吃甜點是不需要理由的.svg"
           srcSet=""
