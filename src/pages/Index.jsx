@@ -1,8 +1,51 @@
 import { NavLink } from "react-router-dom";
 import { Form } from "react-router-dom";
+import { useState } from "react";
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
 export default function IndexPage() {
+  const products = [
+    {
+      id: "product-1",
+      title: "焦糖馬卡龍",
+      label: "本日精選",
+      image: "photo-1.avif",
+      price: 450,
+      currency: "NT$",
+      liked: false
+    },
+    {
+      id: "product-2",
+      title: "焦糖馬卡龍",
+      label: "本日精選",
+      image: "photo-2.avif",
+      price: 450,
+      currency: "NT$",
+      liked: false
+    },
+    {
+      id: "product-3",
+      title: "焦糖馬卡龍",
+      label: "本日精選",
+      image: "photo-3.avif",
+      price: 450,
+      currency: "NT$",
+      liked: false
+    }
+  ];
+
+  const [cart, setCart] = useState([]);
+
+  function addToCart(product) {
+    setCart((prev) => {
+      const found = prev.find((p) => p.id === product.id);
+      if (found) {
+        return prev.map((p) => (p.id === product.id ? { ...p, qty: p.qty + 1 } : p));
+      }
+      return [...prev, { ...product, qty: 1 }];
+    });
+  }
+
   return (
     //  max-sm:px-[20px]
     <section className="">
@@ -53,7 +96,7 @@ export default function IndexPage() {
         </div>
       </div>
 
-            {/* 為啥一定要做/要吃甜點 */}
+      {/* 為啥一定要做/要吃甜點 */}
       <div className="max-sm:hidden max-w-[1024px] mb-[105px] h-[420px]  bg-[#EAF0ED] flex w-full  px-[42px]">
         {/*  */}
         <div className="flex max-sm:flex-col w-full mb-[80px] justify-between relative">
@@ -116,7 +159,7 @@ export default function IndexPage() {
             </div>
             {/* 左側縱書文案 */}
             <div className="h-full text-[#8DA291]">
-              <p className=" h-[299px] [writing-mode:vertical-rl] [text-orientation:upright] leading-[36px] tracking-[0px] text-[16px]">
+              <p className=" h-[299px] [writing-mode:vertical-rl] [text-orientation:upright] leading-[40px] tracking-[0px] text-[16px]">
                 青山依舊在，幾度夕陽紅。慣看秋月春風。一壺濁酒喜相逢，浪花淘盡英雄。是非成敗轉頭空，滾滾長江東逝水，白髮漁樵江渚上，古今多少事，都付笑談中。
               </p>
             </div>
@@ -195,7 +238,8 @@ export default function IndexPage() {
       </div>
 
       {/* 想吃甜點是不需要理由的 */}
-      <div className="mb-[80px]  flex justify-center">
+      {/* sm-橫式-想吃甜點是不需要理由的 */}
+      <div className="max-sm:hidden mb-[80px] flex justify-center">
         <img
           className="w-[90px] h-full object-cover"
           src={`${BASE_URL}lg-想吃甜點是不需要理由的.svg`}
@@ -204,7 +248,47 @@ export default function IndexPage() {
         />
       </div>
 
+      <div className="sm:hidden mb-[80px] flex justify-center">
+        <img
+          className="w-[226px] h-full object-cover"
+          src={`${BASE_URL}sm-橫式-想吃甜點是不需要理由的.svg`}
+          alt="sm-橫式-想吃甜點是不需要理由的.svg"
+          srcset=""
+        />
+      </div>
+
       {/* 三個商品 可以加入購物車 */}
+      <div className="max-w-[1024px] mx-auto mb-[120px] px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {products.map((p) => (
+            <div key={p.id} className="overflow-hidden border border-[#EAF0ED] bg-white">
+              <div className="w-[300px] h-[315px] bg-gray-100">
+                <img
+                  src={BASE_URL + p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-[20px] font-[300] text-[#2f4f3d]">{p.title}</h3>
+                  {/* <span className="text-sm text-[#8DA291]">{p.label}</span> */}
+                  <div className="text-[20px] font-[600">{p.currency}{p.price}</div>
+                </div>
+                <p className="text-sm text-[#6B7C6F] mb-4">{p.description}</p>
+                <div className="flex items-center justify-between">
+                  <button
+                    onClick={() => addToCart(p)}
+                    className="bg-[#3F5D45] text-white px-3 py-2 rounded-md text-sm hover:opacity-90"
+                  >
+                    加入購物車
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
