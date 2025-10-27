@@ -135,7 +135,7 @@ export default function Invoice() {
                     <div>
                       地址
                     </div>
-                    <div>
+                    <div className="max-sm:hidden">
                       <input className="mr-[8px]" type="checkbox" name="" id="sameAsAddress" />
                       <label htmlFor="sameAsAddress">同運送地址</label>
                     </div>
