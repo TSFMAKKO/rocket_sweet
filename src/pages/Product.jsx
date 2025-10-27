@@ -69,7 +69,7 @@ const PRODUCT_DATA = {
 function FilterList({ title, items, active, onChange }) {
   return (
     <aside className="w-full md:max-w-[300px] bg-white">
-      <div className="bg-[#3F5D45] text-white text-center py-3 rounded-t">
+      <div className="bg-[#3F5D45] text-white text-center py-3">
         {title}
       </div>
       <ul className="border border-[#EAF0ED] divide-y">
@@ -86,7 +86,7 @@ function FilterList({ title, items, active, onChange }) {
                 className={`${
                   // 被選中的加上背景顏色(例如所有甜點)
                   isActive ? "bg-[#EAF0ED]" : "bg-white"
-                } w-full flex items-center justify-between px-4 py-3 text-left`}
+                  } w-full flex items-center justify-between px-4 py-3 text-left`}
               >
                 <span>{item.name}</span>
                 <span className="text-gray-500">({item.count})</span>
@@ -152,9 +152,8 @@ function Pagination({ current, total }) {
       {pages.map((n) => (
         <button
           key={n}
-          className={`flex justify-center items-center w-[60px] h-[60px] border border-[#EAF0ED] ${
-            n === current ? "bg-[#3F5D45] text-white" : "bg-white"
-          }`}
+          className={`flex justify-center items-center w-[60px] h-[60px] border border-[#EAF0ED] ${n === current ? "bg-[#3F5D45] text-white" : "bg-white"
+            }`}
         >
           {n}
         </button>
@@ -164,7 +163,7 @@ function Pagination({ current, total }) {
         disabled={current >= total}
       >
         {/* › */}
-         <img src={BASE_URL + "arrow_right.png"} alt="" />
+        <img src={BASE_URL + "arrow_right.png"} alt="" />
       </button>
     </nav>
   );
@@ -180,7 +179,28 @@ export default function ProductPage() {
   const filtered = PRODUCT_DATA.products;
 
   return (
-    <section className="">
+    <section className="relative">
+      <div className="max-sm:hidden absolute top-[40px] right-[40px] flex justify-center">
+        <img
+          className="w-[90px] h-full object-cover"
+          src={`${BASE_URL}lg-想吃甜點是不需要理由的.svg`}
+          alt="lg-想吃甜點是不需要理由的.svg"
+          srcSet=""
+        />
+      </div>
+
+      <div className="sm:hidden absolute top-[40px] right-[40px] flex justify-center">
+         {/* font-size: clamp(1.4rem, 3vw, 1.6rem); */}
+         {/* h-[clamp(250px, 0.5vw, 400px)] */}
+        <img
+          className="h-[180px] object-cover aspect-auto"
+          src={`${BASE_URL}sm-想吃甜點是不需要理由的.svg`}
+          alt="sm-想吃甜點是不需要理由的.svg"
+          srcSet=""
+        />
+      </div>
+
+
       {/*  */}
       <img
         src={BASE_URL + "photo-1512484457149-266d165a4eca.avif"}
