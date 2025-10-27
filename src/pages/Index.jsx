@@ -258,32 +258,36 @@ export default function IndexPage() {
       </div>
 
       {/* 三個商品 可以加入購物車 */}
-      <div className="max-w-[1024px] mx-auto mb-[120px] px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {products.map((p) => (
-            <div key={p.id} className="overflow-hidden border border-[#EAF0ED] bg-white">
-              <div className="w-[300px] h-[315px] bg-gray-100">
+      <div className="max-w-[1024px] mx-auto mb-[120px] px-[42px] max-sm:px-[30px]">
+        <div className="flex flex-wrap justify-center gap-[20px]">
+          {products.map((p, i) => (
+            <div
+              key={p.id}
+              className="relative overflow-hidden border border-[#EAF0ED] bg-white w-[calc(33%-16.6px)] max-sm:w-full flex flex-col"
+            >
+              <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] leading-[36px] left-[20px] top-0 bg-[#3F5D45] text-white text-[16px] font-[600] px-[10px] pb-[20px] ">{p.label}</span>    
+              <div className="w-full h-full bg-gray-100">
                 <img
                   src={BASE_URL + p.image}
                   alt={p.title}
-                  className="w-full h-full object-cover"
+                  className="object-cover aspect-[300/315]"
                 />
               </div>
-              <div className="">
+              <div className="flex-1">
                 <div className="flex items-center h-[60px]">
-                  <h3 className="text-[20px] font-[300] border border-[#EAF0ED] py-[14px] px-[33px] text-[#2f4f3d]">{p.title}</h3>
-                  <div className="text-[20px] font-[600] border border-[#EAF0ED] py-[14px] flex-1 text-center">{p.currency}{p.price}</div>
+                  <h3 className="text-[20px] font-[300] border border-[#EAF0ED] py-[14px] flex-5 text-center text-[#2f4f3d]">{p.title}</h3>
+                  <div className="text-[20px] font-[600] border border-[#EAF0ED] py-[14px] flex-4 text-center">{p.currency}{p.price}</div>
                 </div>
                 {/* <p className="text-sm text-[#6B7C6F] mb-4">{p.description}</p> */}
               </div>
-                <div className="flex items-center justify-center">
-                  <button
-                    onClick={() => addToCart(p)}
-                    className="w-full bg-[#EAF0ED] text-[#3F5D45] text-[24px] font-[600] py-[16px] hover:opacity-90"
-                  >
-                    加入購物車
-                  </button>
-                </div>
+              <div className="flex items-center justify-center">
+                <button
+                  onClick={() => addToCart(p)}
+                  className="w-full bg-[#EAF0ED] text-[#3F5D45] text-[24px] font-[600] py-[16px] hover:opacity-90"
+                >
+                  加入購物車
+                </button>
+              </div>
             </div>
           ))}
         </div>
