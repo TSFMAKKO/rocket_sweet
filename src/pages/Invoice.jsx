@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   CART_ITEMS,
   SHIPPING_FEE,
@@ -10,6 +10,10 @@ import {
 export default function Invoice() {
   // 在元件內計算訂單摘要（此頁不變更商品內容，故直接以 CART_ITEMS 計算）
   const summary = useMemo(() => computeSummary(CART_ITEMS, SHIPPING_FEE), []);
+
+  //郵寄發票或電子發票的狀態切換可以再加一個 state 來控制
+  const [isDigitalInvoice, setIsDigitalInvoice] = useState(true);
+
   return (
     <section className="w-full">
       <div className="max-w-[780px] mx-auto flex flex-col lg:flex-row gap-x-[20px] gap-y-[16px]">
@@ -26,13 +30,13 @@ export default function Invoice() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke="#EAF0ED"
                   className="w-4 h-4"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
@@ -45,13 +49,13 @@ export default function Invoice() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke="#EAF0ED"
                   className="w-4 h-4"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
@@ -69,15 +73,47 @@ export default function Invoice() {
 
           {/* 電子發票/郵寄發票 */}
           <div className="flex w-full justify-center items-center font-[600] text-[24px] h-[54px] mb-[32px]">
-            <div className="flex-1 text-center py-[24px] border bg-[#EAF0ED] text-[#3F5D45]">電子發票</div>
-            <div className="flex-1 text-center py-[24px] border">郵寄發票</div>
+            <div className={`flex-1 text-center py-[24px] border border-[#eaf0ed] ${isDigitalInvoice ? " bg-[#EAF0ED] text-[#3F5D45]" : ""}`}>
+              <input
+                type="radio"
+                name="invoiceType"
+                id="digitalInvoice"
+                checked={isDigitalInvoice}
+                onChange={() => setIsDigitalInvoice(true)}
+                className="hidden"
+              />
+              <label
+                htmlFor="digitalInvoice"
+                className="cursor-pointer block w-full h-full"
+              >
+                電子發票
+              </label>
+            </div>
+
+            <div className={`flex-1 text-center py-[24px] border border-[#eaf0ed] ${!isDigitalInvoice ? " bg-[#EAF0ED] text-[#3F5D45]" : ""}`}>
+              <input
+                type="radio"
+                name="invoiceType"
+                id="paperInvoice"
+                checked={!isDigitalInvoice}
+                onChange={() => setIsDigitalInvoice(false)}
+                className="hidden"
+              />
+              <label
+                htmlFor="paperInvoice"
+                className="cursor-pointer block w-full h-full"
+              >
+                郵寄發票
+              </label>
+            </div>
           </div>
 
-          <div className="">
+          {/* 電子發票/郵寄發票切換 */}
+          <div>
             {/* 表單 */}
             <form className="space-y-5">
-              {/* email */}
-              <div>
+              {/* 電子發票 */}
+              <div className={!isDigitalInvoice ? "hidden" : ""}>
                 <label className="block mb-2 text-[16px]" htmlFor="email">
                   電子郵件信箱
                 </label>
@@ -91,7 +127,50 @@ export default function Invoice() {
                 />
               </div>
 
-              {/* 統一編號(選填) */}
+              {/* 郵寄發票 */}
+              <div className={isDigitalInvoice ? "hidden" : ""}>
+                {/* 地址 */}
+                {/* 地址 */}
+                <div>
+                  <label className="block mb-2 text-[16px]" htmlFor="city">
+                    地址
+                  </label>
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <select
+                      id="city"
+                      name="city"
+                      className="w-full appearance-none bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                      defaultValue="高雄市"
+                    >
+                      <option>高雄市</option>
+                      <option>台北市</option>
+                      <option>新北市</option>
+                      <option>台中市</option>
+                    </select>
+                    <select
+                      id="district"
+                      name="district"
+                      className="w-full appearance-none bg-[#EAF0ED] text-[#3F5D45] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                      defaultValue="新興區"
+                    >
+                      <option>新興區</option>
+                      <option>苓雅區</option>
+                      <option>左營區</option>
+                      <option>三民區</option>
+                    </select>
+                  </div>
+                  <input
+                    id="address"
+                    name="address"
+                    type="text"
+                    placeholder="幸福路 520 號"
+                    className="w-full appearance-none bg-[#EAF0ED] text-[#3F5D45] placeholder-[#8DA291] px-4 py-3 outline-none focus:ring-2 focus:ring-[#FFE180]"
+                    autoComplete="street-address"
+                  />
+                </div>
+              </div>
+
+              {/* 統一編號(選填) 共用 */}
               <div>
                 <label className="block mb-2 text-[16px]" htmlFor="taxId">
                   統一編號(選填)
@@ -107,6 +186,10 @@ export default function Invoice() {
               </div>
             </form>
           </div>
+
+
+
+
           <NavLink
             to="/checkout/complete"
             className="block absolute w-full left-[0px] bottom-0 text-center bg-[#FFE180] text-[#3F5D45] text-[24px] font-[600] py-2"

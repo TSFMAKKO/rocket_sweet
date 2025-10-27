@@ -6,20 +6,20 @@ export default function Complete() {
       <div className="max-w-lg mx-auto flex flex-col items-center text-[#3F5D45]">
         <div className="flex justify-center items-center mb-[32px]">
           <span className="w-[20px] h-[20px] bg-[#3F5D45] rounded-full flex justify-center items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#EAF0ED" className="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#EAF0ED" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </span>
           <span className='w-[65px] border-b'></span>
           <span className="w-[20px] h-[20px] bg-[#3F5D45] rounded-full flex justify-center items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#EAF0ED" className="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#EAF0ED" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </span>
           <span className='w-[65px] border-b'></span>
           <span className="w-[20px] h-[20px] bg-[#3F5D45] rounded-full flex justify-center items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#EAF0ED" className="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#EAF0ED" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </span>
         </div>
