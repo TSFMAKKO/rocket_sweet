@@ -113,7 +113,7 @@ export default function Invoice() {
             {/* 表單 */}
             <form className="space-y-5">
               {/* 電子發票 */}
-              <div className={!isDigitalInvoice ? "hidden" : ""}>
+              <div className={` ${!isDigitalInvoice ? "hidden" : ""}`}>
                 <label className="block mb-2 text-[16px]" htmlFor="email">
                   電子郵件信箱
                 </label>
