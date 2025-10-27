@@ -74,7 +74,7 @@ export default function IndexPage() {
         <img
           src={BASE_URL + "首頁1.avif"}
           alt="甜點圖片"
-          className="w-full h-auto"
+          className="w-full h-auto aspect-auto"
         />
       </div>
 
@@ -139,9 +139,8 @@ export default function IndexPage() {
           <div className="mt-[-60px] w-[90px] flex justify-center">
             <img
               className="w-full h-full object-fit"
-              src={`${BASE_URL}lg-為什麼一定要吃甜點.svg`}
+              srcSet={`${BASE_URL}lg-為什麼一定要吃甜點.svg`}
               alt="lg-為什麼一定要吃甜點.svg"
-              srcset=""
             />
           </div>
 
@@ -149,9 +148,8 @@ export default function IndexPage() {
           <div className="mt-[-20px] max-sm:mt-0 w-[460px] max-sm:order-[-1]">
             <img
               className="w-[460px] h-[460px] object-cover"
-              src={`${BASE_URL}photo-1501432781167-c0ccfd492297.avif`}
+              srcSet={`${BASE_URL}photo-1501432781167-c0ccfd492297.avif`}
               alt="photo-1501432781167-c0ccfd492297.avif"
-              srcset=""
             />
           </div>
         </div>
@@ -166,7 +164,7 @@ export default function IndexPage() {
               className="w-[460px] h-[460px] object-cover"
               src={`${BASE_URL}photo-1519730722595-a5ff788dea4d.avif`}
               alt="photo-1519730722595-a5ff788dea4d.avif"
-              srcset=""
+              srcSet=""
             />
           </div>
 
@@ -191,7 +189,7 @@ export default function IndexPage() {
               className="w-full h-full object-fit"
               src={`${BASE_URL}lg-為什麼選擇了做甜點.svg`}
               alt="lg-為什麼選擇了做甜點.svg"
-              srcset=""
+              srcSet=""
             />
           </div>
         </div>
@@ -205,7 +203,7 @@ export default function IndexPage() {
               className="w-[200px] h-full object-cover"
               src={`${BASE_URL}sm-橫式-為什麼一定要吃甜點.svg`}
               alt="sm-橫式-為什麼一定要吃甜點.svg"
-              srcset=""
+              srcSet=""
             />
           </div>
           <div className="flex w-full h-[250px] flex-col items-center justify-center">
@@ -213,7 +211,7 @@ export default function IndexPage() {
               className="w-full h-full object-cover"
               src={`${BASE_URL}photo-1519730722595-a5ff788dea4d.avif`}
               alt="photo-1519730722595-a5ff788dea4d.avif"
-              srcset=""
+              srcSet=""
             />
           </div>
           <div className="py-[30px] px-[30px] gap-y-[60px] bg-[#EAF0ED] font-[300] w-full flex flex-col items-center justify-center ">
@@ -235,7 +233,7 @@ export default function IndexPage() {
               className="w-[200px] h-full object-cover"
               src={`${BASE_URL}sm-橫式-為什麼選擇了做甜點.svg`}
               alt="sm-橫式-為什麼選擇了做甜點.svg"
-              srcset=""
+              srcSet=""
             />
           </div>
           <div className="flex w-full h-[250px] flex-col items-center justify-center">
@@ -243,7 +241,7 @@ export default function IndexPage() {
               className="w-full h-full object-cover"
               src={`${BASE_URL}photo-1501432781167-c0ccfd492297.avif`}
               alt="photo-1501432781167-c0ccfd492297.avif"
-              srcset=""
+              srcSet=""
             />
           </div>
           <div className="py-[30px] px-[30px] gap-y-[60px] bg-[#EAF0ED] font-[300] w-full flex flex-col items-center justify-center ">
@@ -264,7 +262,7 @@ export default function IndexPage() {
           className="w-[90px] h-full object-cover"
           src={`${BASE_URL}lg-想吃甜點是不需要理由的.svg`}
           alt="lg-想吃甜點是不需要理由的.svg"
-          srcset=""
+          srcSet=""
         />
       </div>
 
@@ -273,7 +271,7 @@ export default function IndexPage() {
           className="w-[226px] h-full object-cover"
           src={`${BASE_URL}sm-橫式-想吃甜點是不需要理由的.svg`}
           alt="sm-橫式-想吃甜點是不需要理由的.svg"
-          srcset=""
+          srcSet=""
         />
       </div>
 
