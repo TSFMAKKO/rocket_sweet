@@ -269,22 +269,21 @@ export default function IndexPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-[20px] font-[300] text-[#2f4f3d]">{p.title}</h3>
-                  {/* <span className="text-sm text-[#8DA291]">{p.label}</span> */}
-                  <div className="text-[20px] font-[600">{p.currency}{p.price}</div>
+              <div className="">
+                <div className="flex items-center h-[60px]">
+                  <h3 className="text-[20px] font-[300] border border-[#EAF0ED] py-[14px] px-[33px] text-[#2f4f3d]">{p.title}</h3>
+                  <div className="text-[20px] font-[600] border border-[#EAF0ED] py-[14px] flex-1 text-center">{p.currency}{p.price}</div>
                 </div>
-                <p className="text-sm text-[#6B7C6F] mb-4">{p.description}</p>
-                <div className="flex items-center justify-between">
+                {/* <p className="text-sm text-[#6B7C6F] mb-4">{p.description}</p> */}
+              </div>
+                <div className="flex items-center justify-center">
                   <button
                     onClick={() => addToCart(p)}
-                    className="bg-[#3F5D45] text-white px-3 py-2 rounded-md text-sm hover:opacity-90"
+                    className="w-full bg-[#EAF0ED] text-[#3F5D45] text-[24px] font-[600] py-[16px] hover:opacity-90"
                   >
                     加入購物車
                   </button>
                 </div>
-              </div>
             </div>
           ))}
         </div>
