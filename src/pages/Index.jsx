@@ -36,8 +36,26 @@ export default function IndexPage() {
 
   const [cart, setCart] = useState([]);
 
+  // 收藏狀態：以商品 id 存在集合中代表已收藏
+  const [likedIds, setLikedIds] = useState(new Set());
+
+  const toggleLike = (id) => {
+    setLikedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+
   function addToCart(product) {
     setCart((prev) => {
+      console.log("prev:", prev);
+
       const found = prev.find((p) => p.id === product.id);
       if (found) {
         return prev.map((p) => (p.id === product.id ? { ...p, qty: p.qty + 1 } : p));
@@ -45,6 +63,8 @@ export default function IndexPage() {
       return [...prev, { ...product, qty: 1 }];
     });
   }
+
+
 
   return (
     //  max-sm:px-[20px]
@@ -265,7 +285,29 @@ export default function IndexPage() {
               key={p.id}
               className="relative overflow-hidden border border-[#EAF0ED] bg-white w-[calc(33%-16.6px)] max-sm:w-full flex flex-col"
             >
-              <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] leading-[36px] left-[20px] top-0 bg-[#3F5D45] text-white text-[16px] font-[600] px-[10px] pb-[20px] ">{p.label}</span>    
+
+              <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] leading-[36px] left-[20px] top-0 bg-[#3F5D45] text-white text-[16px] font-[600] px-[10px] pb-[20px] ">{p.label}</span>
+              {/* 收藏按鈕（搭配 products 切換） */}
+              <button
+                type="button"
+                onClick={() => toggleLike(p.id)}
+                aria-pressed={likedIds.has(p.id)}
+                className={`absolute top-[10px] right-[20px] inline-flex  items-center justify-center transition-transform hover:scale-120  active:ring-[#3F5D45]/40 `}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  className="w-[24px] h-[24px]"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M21 8.25c0-2.485-2.098-4.5-4.688-4.5-1.828 0-3.416.99-4.312 2.454C11.104 4.74 9.516 3.75 7.688 3.75 5.098 3.75 3 5.765 3 8.25c0 7.22 9 11.25 9 11.25s9-4.03 9-11.25z"
+                    fill={likedIds.has(p.id) ? 'currentColor' : 'none'}
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </button>
               <div className="w-full h-full bg-gray-100">
                 <img
                   src={BASE_URL + p.image}
