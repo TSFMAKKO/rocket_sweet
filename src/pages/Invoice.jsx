@@ -130,10 +130,15 @@ export default function Invoice() {
               {/* 郵寄發票 */}
               <div className={isDigitalInvoice ? "hidden" : ""}>
                 {/* 地址 */}
-                {/* 地址 */}
                 <div>
-                  <label className="block mb-2 text-[16px]" htmlFor="city">
-                    地址
+                  <label className="flex justify-between mb-2 text-[16px]" htmlFor="city">
+                    <div>
+                      地址
+                    </div>
+                    <div>
+                      <input className="mr-[8px]" type="checkbox" name="" id="sameAsAddress" />
+                      <label htmlFor="sameAsAddress">同運送地址</label>
+                    </div>
                   </label>
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <select
