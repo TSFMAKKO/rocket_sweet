@@ -22,7 +22,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-1473256599800-b48c7c88cd7e.avif",
+      image: "photo-1.avif",
       button: "加入購物車",
     },
     {
@@ -31,7 +31,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "人氣",
-      image: "photo-1499635842761-4f1f28fafcff.avif",
+      image: "photo-2.avif",
       button: "加入購物車",
     },
     {
@@ -40,7 +40,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-1501432781167-c0ccfd492297.avif",
+      image: "photo-3.avif",
       button: "加入購物車",
     },
     {
@@ -49,7 +49,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-1514517220017-8ce97a34a7b6.avif",
+      image: "photo-4.avif",
       button: "加入購物車",
     },
     {
@@ -58,7 +58,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "新品上市",
-      image: "photo-1504855328839-2f4baf9e0fd7.avif",
+      image: "photo-5.avif",
       button: "加入購物車",
     },
     {
@@ -67,7 +67,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-1490474504059-bf2db5ab2348.avif",
+      image: "photo-6.avif",
       button: "加入購物車",
     },
   ],
@@ -206,11 +206,14 @@ export default function ProductPage() {
     PRODUCT_DATA.filters[0].name
   );
 
+  let products = PRODUCT_DATA.products.filter(p => p.label === activeFilter);
+
+
   // 將資料對齊到同一份 React 結構：{ id, title, label, image, price, currency }
   const normalizedProducts = useMemo(
     () =>
       PRODUCT_DATA.products.map((p, idx) => ({
-        id: String(idx + 1),
+        id: String(p.id ?? idx + 1),
         title: p.name,
         label: p.label ?? "",
         image: p.image,
@@ -221,8 +224,14 @@ export default function ProductPage() {
     []
   );
 
-  // 目前為靜態資料(之後從這邊過濾)
-  const filtered = normalizedProducts;
+  // 依目前篩選條件過濾（所有甜點 => 全部）
+  const filtered = useMemo(
+    () =>
+      activeFilter === "所有甜點"
+        ? normalizedProducts
+        : normalizedProducts.filter((p) => p.label === activeFilter),
+    [normalizedProducts, activeFilter]
+  );
 
   // 加入購物車（同步至全域 cart 模組）
   function addToCart(p) {
@@ -316,7 +325,7 @@ export default function ProductPage() {
 
       {/* 把cart 資料印出來 */}
       {
-        PRODUCT_DATA.products.map((item) => (
+        products.map((item) => (
           <div key={item.id}>
             {/* 印出名字 */}
             <p>{item.name}名稱: {item.title}</p>
