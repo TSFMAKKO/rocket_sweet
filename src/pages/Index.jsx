@@ -322,6 +322,7 @@ export default function IndexPage() {
                   />
                 </svg>
               </button>
+              
               <div className="w-full h-full bg-gray-100">
                 <img
                   src={BASE_URL + p.image}

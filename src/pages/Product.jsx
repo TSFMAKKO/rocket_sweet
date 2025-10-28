@@ -3,6 +3,9 @@ import { addCartItem } from "../data/cart";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
+
+
+
 // 使用者提供的資料（將圖片對應到現有 public 圖檔）
 const PRODUCT_DATA = {
   category: "甜點類別",
@@ -106,7 +109,7 @@ function FilterList({ title, items, active, onChange }) {
   );
 }
 
-function ProductCard({ p, onAdd }) {
+function ProductCard({ p, onAdd, liked, onToggleLike }) {
   return (
     <div className="border border-[#EAF0ED] bg-white">
       <div className="relative">
@@ -115,6 +118,28 @@ function ProductCard({ p, onAdd }) {
           <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] leading-[36px] left-[20px] top-0 bg-[#3F5D45] text-white text-[16px] font-[600] px-[10px] pb-[20px] ">{p.label}</span>
 
         ) : null}
+
+        {/* 收藏按鈕（搭配 products 切換） */}
+        <button
+          type="button"
+          onClick={onToggleLike}
+          aria-pressed={liked}
+          className={`absolute top-[10px] right-[20px] inline-flex items-center justify-center transition-transform hover:scale-120 active:ring-[#3F5D45]/40 `}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="w-[24px] h-[24px]"
+            aria-hidden="true"
+          >
+            <path
+              d="M21 8.25c0-2.485-2.098-4.5-4.688-4.5-1.828 0-3.416.99-4.312 2.454C11.104 4.74 9.516 3.75 7.688 3.75 5.098 3.75 3 5.765 3 8.25c0 7.22 9 11.25 9 11.25s9-4.03 9-11.25z"
+              fill={liked ? 'currentColor' : 'none'}
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+          </svg>
+        </button>
         <img
           src={BASE_URL + p.image}
           alt={p.title}
@@ -213,6 +238,20 @@ export default function ProductPage() {
     });
   }
 
+  // 收藏狀態：以商品 id 存在集合中代表已收藏
+  const [likedIds, setLikedIds] = useState(new Set());
+  const toggleLike = (id) => {
+    setLikedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
   return (
     <section className="relative">
       <div className="max-sm:hidden absolute top-[40px] right-[40px] flex justify-center">
@@ -258,7 +297,12 @@ export default function ProductPage() {
             {/* 迴圈把資料印出來 */}
             {filtered.map((p) => (
               <div key={p.id} className="w-full md:max-w-[calc(50%-10px)]">
-                <ProductCard p={p} onAdd={addToCart} />
+                <ProductCard
+                  p={p}
+                  onAdd={addToCart}
+                  liked={likedIds.has(p.id)}
+                  onToggleLike={() => toggleLike(p.id)}
+                />
               </div>
             ))}
           </div>
