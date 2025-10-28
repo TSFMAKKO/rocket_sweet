@@ -89,25 +89,24 @@ export default function Cart() {
                   </p>
                 </div>
 
-                {/* 數量控制（桌機）：方形框、靠近單價 */}
-                <div className="flex items-center gap-x-[2px]">
-                  <button
-                    className="w-[48px] h-[48px] flex items-center justify-center border-2 border-[#3F5D45] text-[#3F5D45] text-[28px] leading-none"
-                    onClick={() => changeQty(item.id, -1)}
-                    aria-label={`減少 ${item.name}`}
-                  >
-                    −
-                  </button>
-                  <div className="min-w-[24px] text-center text-[20px]">{item.qty}</div>
-                  <button
-                    className="w-[48px] h-[48px] flex items-center justify-center border-2 border-[#3F5D45] text-[#3F5D45] text-[28px] leading-none"
-                    onClick={() => changeQty(item.id, 1)}
-                    aria-label={`增加 ${item.name}`}
-                  >
-                    +
-                  </button>
-                </div>
-
+                  {/* 加/減：置於左下角（貼齊圖片底部），造型與桌機一致 */}
+                  <div className="flex justify-start font-[300] items-center gap-x-[0px]">
+                    <button
+                      className="w-[48px] h-[48px] flex items-center justify-center border border-[#EAF0ED] font-[300] text-[#3F5D45] text-[26px] leading-none"
+                      onClick={() => changeQty(item.id, -1)}
+                      aria-label={`減少 ${item.name}`}
+                    >
+                      −
+                    </button>
+                    <div className="w-[48px] h-[48px] flex justify-center items-center text-[18px] border-[#EAF0ED] font-[300] text-[#3F5D45] border-t border-b">{item.qty}</div>
+                    <button
+                      className="w-[48px] h-[48px] flex items-center justify-center border border-[#EAF0ED] text-[#3F5D45] font-[300] text-[26px] leading-none"
+                      onClick={() => changeQty(item.id, 1)}
+                      aria-label={`增加 ${item.name}`}
+                    >
+                      +
+                    </button>
+                  </div>
                 <div className="flex flex-col justify-center text-[#3F5D45] font-[600] text-[24px]">
                   {item?.currency} {getLineTotal(item).toLocaleString()}
                 </div>
@@ -147,17 +146,17 @@ export default function Cart() {
                     </p>
                   </div>
                   {/* 加/減：置於左下角（貼齊圖片底部），造型與桌機一致 */}
-                  <div className="flex justify-start items-center gap-x-3">
+                  <div className="flex justify-start font-[300] items-center gap-x-[0px]">
                     <button
-                      className="w-[48px] h-[48px] flex items-center justify-center border-2 border-[#3F5D45] text-[#3F5D45] text-[26px] leading-none"
+                      className="w-[48px] h-[48px] flex items-center justify-center border border-[#EAF0ED] font-[300] text-[#3F5D45] text-[26px] leading-none"
                       onClick={() => changeQty(item.id, -1)}
                       aria-label={`減少 ${item.name}`}
                     >
                       −
                     </button>
-                    <div className="min-w-[20px] text-center text-[18px]">{item.qty}</div>
+                    <div className="w-[48px] h-[48px] flex justify-center items-center text-[18px] border-[#EAF0ED] font-[300] text-[#3F5D45] border-t border-b">{item.qty}</div>
                     <button
-                      className="w-[48px] h-[48px] flex items-center justify-center border-2 border-[#3F5D45] text-[#3F5D45] text-[26px] leading-none"
+                      className="w-[48px] h-[48px] flex items-center justify-center border border-[#EAF0ED] text-[#3F5D45] font-[300] text-[26px] leading-none"
                       onClick={() => changeQty(item.id, 1)}
                       aria-label={`增加 ${item.name}`}
                     >
