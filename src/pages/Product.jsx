@@ -11,8 +11,8 @@ const PRODUCT_DATA = {
   category: "甜點類別",
   filters: [
     { name: "所有甜點", count: 6 },
-    { name: "本日精選", count: 4 },
-    { name: "人氣", count: 1, label: "300" },
+    { name: "本日精選", count: 3 },
+    { name: "人氣", count: 2, label: "300" },
     { name: "新品上市", count: 1, label: "65" },
   ],
   products: [
@@ -21,7 +21,7 @@ const PRODUCT_DATA = {
       name: "焦糖馬卡龍1",
       price: 450,
       currency: "NT$",
-      label: "本日精選",
+      label: "人氣",
       image: "photo-1.avif",
       button: "加入購物車",
     },
@@ -301,7 +301,7 @@ export default function ProductPage() {
           onChange={setActiveFilter}
         />
 
-        <div>
+        <div className="w-full">
           <div className="flex flex-wrap gap-[20px] max-sm:px-[32px]">
             {/* 迴圈把資料印出來 */}
             {filtered.map((p) => (
