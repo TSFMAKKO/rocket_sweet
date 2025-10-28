@@ -2,12 +2,13 @@ import { NavLink } from "react-router-dom";
 import { Form } from "react-router-dom";
 import { useState } from "react";
 const BASE_URL = import.meta.env.BASE_URL || "/";
+import { addCartItem } from "../data/cart";
 
 export default function IndexPage() {
   const products = [
     {
-      id: "product-1",
-      title: "焦糖馬卡龍",
+      id: "1",
+      title: "焦糖馬卡龍1",
       label: "本日精選",
       image: "photo-1.avif",
       price: 450,
@@ -15,8 +16,8 @@ export default function IndexPage() {
       liked: false
     },
     {
-      id: "product-2",
-      title: "焦糖馬卡龍",
+      id: "2",
+      title: "焦糖馬卡龍2",
       label: "本日精選",
       image: "photo-2.avif",
       price: 450,
@@ -24,8 +25,8 @@ export default function IndexPage() {
       liked: false
     },
     {
-      id: "product-3",
-      title: "焦糖馬卡龍",
+      id: "3",
+      title: "焦糖馬卡龍3",
       label: "本日精選",
       image: "photo-3.avif",
       price: 450,
@@ -52,15 +53,29 @@ export default function IndexPage() {
   };
 
 
-  function addToCart(product) {
-    setCart((prev) => {
-      console.log("prev:", prev);
+  // function addToCart(product) {
+  //   setCart((prev) => {
+  //     console.log("prev:", prev);
 
-      const found = prev.find((p) => p.id === product.id);
-      if (found) {
-        return prev.map((p) => (p.id === product.id ? { ...p, qty: p.qty + 1 } : p));
-      }
-      return [...prev, { ...product, qty: 1 }];
+  //     const found = prev.find((p) => p.id === product.id);
+  //     if (found) {
+  //       return prev.map((p) => (p.id === product.id ? { ...p, qty: p.qty + 1 } : p));
+  //     }
+  //     return [...prev, { ...product, qty: 1 }];
+  //   });
+  // }
+
+  // 加入購物車（同步至全域 cart 模組）
+  function addToCart(p) {
+    console.log("addToCart:", p);
+
+    addCartItem({
+      id: p.id,
+      title: p.title,
+      label: p.label,
+      price: p.price,
+      currency: p.currency,
+      image: p.image,
     });
   }
 
@@ -284,6 +299,7 @@ export default function IndexPage() {
               className="relative overflow-hidden border border-[#EAF0ED] bg-white w-[calc(33%-16.6px)] max-sm:w-full flex flex-col"
             >
 
+              {/* 本日精選 */}
               <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] leading-[36px] left-[20px] top-0 bg-[#3F5D45] text-white text-[16px] font-[600] px-[10px] pb-[20px] ">{p.label}</span>
               {/* 收藏按鈕（搭配 products 切換） */}
               <button
@@ -332,6 +348,24 @@ export default function IndexPage() {
           ))}
         </div>
       </div>
+
+      {/* 把cart 資料印出來 */}
+      {
+        cart.map((item) => (
+          <div key={item.id}>
+            {/* 印出名字 */}
+            <p>{item.name}名稱: {item.title}</p>
+            <p>{item.name}數量: {item.qty}</p>
+            <div className="text-[20px] font-[500]">
+              {item.currency} {item.unitPrice} x {item.qty} = {item.currency} {item.price * item.qty}
+            </div>
+          </div>
+        ))
+      }
+
+
+
+
     </section>
   );
 }

@@ -61,7 +61,7 @@ export default function Cart() {
           {/* {
               id: "macaron-1",
               name: "焦糖馬卡龍",
-              unitPrice: 450,
+              price: 450,
               currency: "NT$",
               qty: 2,
               image: BASE_URL + "photo-1514517220017-8ce97a34a7b6.avif",
@@ -85,7 +85,7 @@ export default function Cart() {
                 <div className="flex flex-col justify-center">
                   <p>{item.name}</p>
                   <p>
-                    {item?.currency} {item?.unitPrice.toLocaleString()}
+                    {item?.currency} {item?.price.toLocaleString()}
                   </p>
                 </div>
 
@@ -142,7 +142,7 @@ export default function Cart() {
                   <div className="flex flex-col">
                     <p>{item.name}</p>
                     <p>
-                      {item?.currency} {item?.unitPrice.toLocaleString()}
+                      {item?.currency} {item?.price.toLocaleString()}
                     </p>
                   </div>
                   {/* 加/減：置於左下角（貼齊圖片底部），造型與桌機一致 */}
