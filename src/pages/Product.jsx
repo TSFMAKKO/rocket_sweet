@@ -9,12 +9,12 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
 // 使用者提供的資料（將圖片對應到現有 public 圖檔）
 const PRODUCT_DATA = {
   category: "甜點類別",
-  filters: [
-    { name: "所有甜點", count: 6 },
-    { name: "本日精選", count: 3 },
-    { name: "人氣", count: 2, label: "300" },
-    { name: "新品上市", count: 1, label: "65" },
-  ],
+  // filters: [
+  //   { name: "所有甜點", count: 6 },
+  //   { name: "本日精選", count: 3 },
+  //   { name: "人氣", count: 2, label: "300" },
+  //   { name: "新品上市", count: 1, label: "65" },
+  // ],
   products: [
     {
       id: "1",
@@ -22,8 +22,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "人氣",
-      image: "photo-1.avif",
-      button: "加入購物車",
+      image: "photo-1.avif"
     },
     {
       id: "2",
@@ -31,8 +30,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "人氣",
-      image: "photo-2.avif",
-      button: "加入購物車",
+      image: "photo-2.avif"
     },
     {
       id: "3",
@@ -40,8 +38,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-3.avif",
-      button: "加入購物車",
+      image: "photo-3.avif"
     },
     {
       id: "4",
@@ -49,8 +46,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-4.avif",
-      button: "加入購物車",
+      image: "photo-4.avif"
     },
     {
       id: "5",
@@ -58,8 +54,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "新品上市",
-      image: "photo-5.avif",
-      button: "加入購物車",
+      image: "photo-5.avif"
     },
     {
       id: "6",
@@ -67,8 +62,7 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-6.avif",
-      button: "加入購物車",
+      image: "photo-6.avif"
     },
   ],
   pagination: { current_page: 1, total_pages: 3 },
@@ -83,7 +77,7 @@ function FilterList({ title, items, active, onChange }) {
         {title}
       </div>
       <ul className="border border-[#EAF0ED] divide-y">
-        {/*  */}
+        {/* 左側選單 */}
         {items.map((item) => {
           // active=所有甜點
           const isActive = active === item.name;
@@ -154,8 +148,9 @@ function ProductCard({ p, onAdd, liked, onToggleLike }) {
         </div>
       </div>
 
+      {/* 加入購物車 */}
       <button onClick={() => onAdd?.(p)} className="w-full bg-[#EAF0ED] hover:bg-[#dbe4dd] text-[#3F5D45] py-[12px]">
-        {p.button}
+        加入購物車
       </button>
     </div>
   );
@@ -201,13 +196,47 @@ function Pagination({ current, total }) {
 }
 
 export default function ProductPage() {
+
+  // 產生左側篩選清單（依產品的 label 自動統計）
+  // 輸出格式：[{ name: '所有甜點', count: 6 }, { name: '本日精選', count: 3 }, ...]
+  const filters = useMemo(() => {
+    const list = PRODUCT_DATA.products;
+
+    // 1) 統計每個 label 出現次數
+    const counts = list.reduce((acc, product) => {
+      const key = product.label || "未分類"; // 沒有 label 的歸到「未分類」
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+
+    // 2) 組成清單，開頭先放「所有甜點」
+    const labelFilters = Object.keys(counts).map((name) => ({
+      name,
+      count: counts[name],
+    }));
+
+    return [{ name: "所有甜點", count: list.length }, ...labelFilters];
+  }, []);
+  
+  // PRODUCT_DATA.products.forEach(el => {
+  //   console.log("el:", el);
+  //   let obj = {}
+
+
+  // });
+
   const [activeFilter, setActiveFilter] = useState(
     // 設定初始的過濾條件(所有甜點)  { name: "所有甜點", count: 48 }
-    PRODUCT_DATA.filters[0].name
+    filters[0].name
   );
 
-  let products = PRODUCT_DATA.products.filter(p => p.label === activeFilter);
-
+  // let products = PRODUCT_DATA.products.filter(p => p.label === activeFilter);
+  //  filters: [
+  //     { name: "所有甜點", count: 6 },
+  //     { name: "本日精選", count: 3 },
+  //     { name: "人氣", count: 2, label: "300" },
+  //     { name: "新品上市", count: 1, label: "65" },
+  //   ],
 
   // 將資料對齊到同一份 React 結構：{ id, title, label, image, price, currency }
   const normalizedProducts = useMemo(
@@ -295,7 +324,7 @@ export default function ProductPage() {
       <div className="flex flex-col md:flex-row gap-x-[20px]">
         <FilterList
           title={PRODUCT_DATA.category}
-          items={PRODUCT_DATA.filters}
+          items={filters}
           // active=所有甜點
           active={activeFilter}
           onChange={setActiveFilter}
@@ -325,16 +354,16 @@ export default function ProductPage() {
 
       {/* 把cart 資料印出來 */}
       {
-        products.map((item) => (
-          <div key={item.id}>
-            {/* 印出名字 */}
-            <p>{item.name}名稱: {item.title}</p>
-            <p>{item.name}數量: {item.qty}</p>
-            <div className="text-[20px] font-[500]">
-              {item.currency} {item.unitPrice} x {item.qty} = {item.currency} {item.price * item.qty}
-            </div>
-          </div>
-        ))
+        // products.map((item) => (
+        //   <div key={item.id}>
+        //     {/* 印出名字 */}
+        //     <p>{item.name}名稱: {item.title}</p>
+        //     <p>{item.name}數量: {item.qty}</p>
+        //     <div className="text-[20px] font-[500]">
+        //       {item.currency} {item.unitPrice} x {item.qty} = {item.currency} {item.price * item.qty}
+        //     </div>
+        //   </div>
+        // ))
       }
     </section>
   );
