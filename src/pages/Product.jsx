@@ -22,7 +22,8 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "人氣",
-      image: "photo-1.avif"
+      image: "photo-1.avif",
+      liked: false
     },
     {
       id: "2",
@@ -30,7 +31,8 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "人氣",
-      image: "photo-2.avif"
+      image: "photo-2.avif",
+      liked: false
     },
     {
       id: "3",
@@ -38,7 +40,8 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-3.avif"
+      image: "photo-3.avif",
+      liked: true
     },
     {
       id: "4",
@@ -46,7 +49,8 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-4.avif"
+      image: "photo-4.avif",
+      liked: false
     },
     {
       id: "5",
@@ -54,7 +58,8 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "新品上市",
-      image: "photo-5.avif"
+      image: "photo-5.avif",
+      liked: true
     },
     {
       id: "6",
@@ -62,7 +67,8 @@ const PRODUCT_DATA = {
       price: 450,
       currency: "NT$",
       label: "本日精選",
-      image: "photo-6.avif"
+      image: "photo-6.avif",
+      liked: false
     },
   ],
   pagination: { current_page: 1, total_pages: 3 },
