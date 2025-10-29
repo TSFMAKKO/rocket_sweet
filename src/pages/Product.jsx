@@ -70,6 +70,24 @@ const PRODUCT_DATA = {
       image: "photo-6.avif",
       liked: false
     },
+       {
+      id: "7",
+      name: "焦糖馬卡龍6",
+      price: 450,
+      currency: "NT$",
+      label: "本日精選",
+      image: "photo-6.avif",
+      liked: false
+    },
+       {
+      id: "8",
+      name: "焦糖馬卡龍6",
+      price: 450,
+      currency: "NT$",
+      label: "本日精選",
+      image: "photo-6.avif",
+      liked: false
+    },
   ],
   pagination: { current_page: 1, total_pages: 3 },
 };
