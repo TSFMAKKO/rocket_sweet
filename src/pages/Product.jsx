@@ -1,64 +1,92 @@
 import { useMemo, useState } from "react";
+import { addCartItem } from "../data/cart";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
+
+
+
 
 // 使用者提供的資料（將圖片對應到現有 public 圖檔）
 const PRODUCT_DATA = {
   category: "甜點類別",
-  filters: [
-    { name: "所有甜點", count: 48 },
-    { name: "本日精選", count: 10 },
-    { name: "人氣", count: 26, tag: "300" },
-    { name: "新品上市", count: 12, tag: "65" },
-  ],
+  // filters: [
+  //   { name: "所有甜點", count: 6 },
+  //   { name: "本日精選", count: 3 },
+  //   { name: "人氣", count: 2, label: "300" },
+  //   { name: "新品上市", count: 1, label: "65" },
+  // ],
   products: [
     {
-      name: "焦糖馬卡龍",
+      id: "1",
+      name: "焦糖馬卡龍1",
       price: 450,
       currency: "NT$",
-      tag: "本日精選",
-      image: "photo-1473256599800-b48c7c88cd7e.avif",
-      button: "加入購物車",
+      label: "人氣",
+      image: "photo-1.avif",
+      liked: false
     },
     {
-      name: "焦糖馬卡龍",
+      id: "2",
+      name: "焦糖馬卡龍2",
       price: 450,
       currency: "NT$",
-      tag: "本日精選",
-      image: "photo-1499635842761-4f1f28fafcff.avif",
-      button: "加入購物車",
+      label: "人氣",
+      image: "photo-2.avif",
+      liked: false
     },
     {
-      name: "焦糖馬卡龍",
+      id: "3",
+      name: "焦糖馬卡龍3",
       price: 450,
       currency: "NT$",
-      tag: "本日精選",
-      image: "photo-1501432781167-c0ccfd492297.avif",
-      button: "加入購物車",
+      label: "本日精選",
+      image: "photo-3.avif",
+      liked: true
     },
     {
-      name: "焦糖馬卡龍",
+      id: "4",
+      name: "焦糖馬卡龍4",
       price: 450,
       currency: "NT$",
-      tag: "本日精選",
-      image: "photo-1514517220017-8ce97a34a7b6.avif",
-      button: "加入購物車",
+      label: "本日精選",
+      image: "photo-4.avif",
+      liked: false
     },
     {
-      name: "焦糖馬卡龍",
+      id: "5",
+      name: "焦糖馬卡龍5",
       price: 450,
       currency: "NT$",
-      tag: "",
-      image: "photo-1504855328839-2f4baf9e0fd7.avif",
-      button: "加入購物車",
+      label: "新品上市",
+      image: "photo-5.avif",
+      liked: true
     },
     {
-      name: "焦糖馬卡龍",
+      id: "6",
+      name: "焦糖馬卡龍6",
       price: 450,
       currency: "NT$",
-      tag: "本日精選",
-      image: "photo-1490474504059-bf2db5ab2348.avif",
-      button: "加入購物車",
+      label: "本日精選",
+      image: "photo-6.avif",
+      liked: false
+    },
+       {
+      id: "7",
+      name: "焦糖馬卡龍6",
+      price: 450,
+      currency: "NT$",
+      label: "本日精選",
+      image: "photo-6.avif",
+      liked: false
+    },
+       {
+      id: "8",
+      name: "焦糖馬卡龍6",
+      price: 450,
+      currency: "NT$",
+      label: "本日精選",
+      image: "photo-6.avif",
+      liked: false
     },
   ],
   pagination: { current_page: 1, total_pages: 3 },
@@ -73,7 +101,7 @@ function FilterList({ title, items, active, onChange }) {
         {title}
       </div>
       <ul className="border border-[#EAF0ED] divide-y">
-        {/*  */}
+        {/* 左側選單 */}
         {items.map((item) => {
           // active=所有甜點
           const isActive = active === item.name;
@@ -99,32 +127,54 @@ function FilterList({ title, items, active, onChange }) {
   );
 }
 
-function ProductCard({ p }) {
+function ProductCard({ p, onAdd, liked, onToggleLike }) {
   return (
     <div className="border border-[#EAF0ED] bg-white">
       <div className="relative">
         {/* 有本日精選之類的就印出來 */}
-        {p.tag ? (
-          <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] left-3 top-3 bg-[#3F5D45] text-white text-xs px-2 py-1 rounded-sm">
-            {p.tag}
-          </span>
+        {p.label ? (
+          <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] leading-[36px] left-[20px] top-0 bg-[#3F5D45] text-white text-[16px] font-[600] px-[10px] pb-[20px] ">{p.label}</span>
+
         ) : null}
+
+        {/* 收藏按鈕（搭配 products 切換） */}
+        <button
+          type="button"
+          onClick={onToggleLike}
+          aria-pressed={liked}
+          className={`absolute top-[10px] right-[20px] inline-flex items-center justify-center transition-transform hover:scale-120 active:ring-[#3F5D45]/40 `}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="w-[24px] h-[24px]"
+            aria-hidden="true"
+          >
+            <path
+              d="M21 8.25c0-2.485-2.098-4.5-4.688-4.5-1.828 0-3.416.99-4.312 2.454C11.104 4.74 9.516 3.75 7.688 3.75 5.098 3.75 3 5.765 3 8.25c0 7.22 9 11.25 9 11.25s9-4.03 9-11.25z"
+              fill={liked ? 'currentColor' : 'none'}
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+          </svg>
+        </button>
         <img
           src={BASE_URL + p.image}
-          alt={p.name}
+          alt={p.title}
           className="w-full h-[315px] object-cover"
         />
       </div>
 
       <div className="flex justify-between items-center px-[16px] py-[12px] border-t border-[#EAF0ED]">
-        <div className="text-gray-700">{p.name}</div>
+        <div className="text-gray-700">{p.title}</div>
         <div className="text-gray-900">
           {p.currency} {p.price}
         </div>
       </div>
 
-      <button className="w-full bg-[#EAF0ED] hover:bg-[#dbe4dd] text-[#3F5D45] py-[12px]">
-        {p.button}
+      {/* 加入購物車 */}
+      <button onClick={() => onAdd?.(p)} className="w-full bg-[#EAF0ED] hover:bg-[#dbe4dd] text-[#3F5D45] py-[12px]">
+        加入購物車
       </button>
     </div>
   );
@@ -170,13 +220,99 @@ function Pagination({ current, total }) {
 }
 
 export default function ProductPage() {
+
+  // 產生左側篩選清單（依產品的 label 自動統計）
+  // 輸出格式：[{ name: '所有甜點', count: 6 }, { name: '本日精選', count: 3 }, ...]
+  const filters = useMemo(() => {
+    const list = PRODUCT_DATA.products;
+
+    // 1) 統計每個 label 出現次數
+    const counts = list.reduce((acc, product) => {
+      const key = product.label || "未分類"; // 沒有 label 的歸到「未分類」
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+
+    // 2) 組成清單，開頭先放「所有甜點」
+    const labelFilters = Object.keys(counts).map((name) => ({
+      name,
+      count: counts[name],
+    }));
+
+    return [{ name: "所有甜點", count: list.length }, ...labelFilters];
+  }, []);
+  
+  // PRODUCT_DATA.products.forEach(el => {
+  //   console.log("el:", el);
+  //   let obj = {}
+
+
+  // });
+
   const [activeFilter, setActiveFilter] = useState(
     // 設定初始的過濾條件(所有甜點)  { name: "所有甜點", count: 48 }
-    PRODUCT_DATA.filters[0].name
+    filters[0].name
   );
 
-  // 目前為靜態資料(之後從這邊過濾)
-  const filtered = PRODUCT_DATA.products;
+  // let products = PRODUCT_DATA.products.filter(p => p.label === activeFilter);
+  //  filters: [
+  //     { name: "所有甜點", count: 6 },
+  //     { name: "本日精選", count: 3 },
+  //     { name: "人氣", count: 2, label: "300" },
+  //     { name: "新品上市", count: 1, label: "65" },
+  //   ],
+
+  // 將資料對齊到同一份 React 結構：{ id, title, label, image, price, currency }
+  const normalizedProducts = useMemo(
+    () =>
+      PRODUCT_DATA.products.map((p, idx) => ({
+        id: String(p.id ?? idx + 1),
+        title: p.name,
+        label: p.label ?? "",
+        image: p.image,
+        price: p.price,
+        currency: p.currency || "NT$",
+        button: p.button || "加入購物車",
+      })),
+    []
+  );
+
+  // 依目前篩選條件過濾（所有甜點 => 全部）
+  const filtered = useMemo(
+    () =>
+      activeFilter === "所有甜點"
+        ? normalizedProducts
+        : normalizedProducts.filter((p) => p.label === activeFilter),
+    [normalizedProducts, activeFilter]
+  );
+
+  // 加入購物車（同步至全域 cart 模組）
+  function addToCart(p) {
+    console.log("addToCart:", p);
+
+    addCartItem({
+      id: p.id,
+      title: p.title,
+      label: p.label,
+      price: p.price,
+      currency: p.currency,
+      image: p.image,
+    });
+  }
+
+  // 收藏狀態：以商品 id 存在集合中代表已收藏
+  const [likedIds, setLikedIds] = useState(new Set());
+  const toggleLike = (id) => {
+    setLikedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
 
   return (
     <section className="relative">
@@ -190,8 +326,8 @@ export default function ProductPage() {
       </div>
 
       <div className="sm:hidden absolute top-[40px] right-[40px] flex justify-center">
-         {/* font-size: clamp(1.4rem, 3vw, 1.6rem); */}
-         {/* h-[clamp(250px, 0.5vw, 400px)] */}
+        {/* font-size: clamp(1.4rem, 3vw, 1.6rem); */}
+        {/* h-[clamp(250px, 0.5vw, 400px)] */}
         <img
           className="h-[180px] object-cover aspect-auto"
           src={`${BASE_URL}sm-想吃甜點是不需要理由的.svg`}
@@ -212,18 +348,23 @@ export default function ProductPage() {
       <div className="flex flex-col md:flex-row gap-x-[20px]">
         <FilterList
           title={PRODUCT_DATA.category}
-          items={PRODUCT_DATA.filters}
+          items={filters}
           // active=所有甜點
           active={activeFilter}
           onChange={setActiveFilter}
         />
 
-        <div>
+        <div className="w-full">
           <div className="flex flex-wrap gap-[20px] max-sm:px-[32px]">
             {/* 迴圈把資料印出來 */}
-            {filtered.map((p, idx) => (
-              <div key={p.name + idx} className="w-full md:max-w-[calc(50%-10px)]">
-                <ProductCard p={p} />
+            {filtered.map((p) => (
+              <div key={p.id} className="w-full md:max-w-[calc(50%-10px)]">
+                <ProductCard
+                  p={p}
+                  onAdd={addToCart}
+                  liked={likedIds.has(p.id)}
+                  onToggleLike={() => toggleLike(p.id)}
+                />
               </div>
             ))}
           </div>
@@ -234,6 +375,20 @@ export default function ProductPage() {
           />
         </div>
       </div>
+
+      {/* 把cart 資料印出來 */}
+      {
+        // products.map((item) => (
+        //   <div key={item.id}>
+        //     {/* 印出名字 */}
+        //     <p>{item.name}名稱: {item.title}</p>
+        //     <p>{item.name}數量: {item.qty}</p>
+        //     <div className="text-[20px] font-[500]">
+        //       {item.currency} {item.unitPrice} x {item.qty} = {item.currency} {item.price * item.qty}
+        //     </div>
+        //   </div>
+        // ))
+      }
     </section>
   );
 }

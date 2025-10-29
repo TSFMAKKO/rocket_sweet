@@ -49,9 +49,15 @@ export default function LoginPage() {
     <div className="bg-[#EAF0ED] h-[350px] my-auto flex flex-col justify-center gap-y-[36px]">
       <p className="">── 連結社群帳號 ──</p>
       <div className=" flex flex-col gap-y-[16px] mx-auto w-[85%] text-[24px]">
-        <button className="bg-white py-2 rounded font-semibold">facebook</button>
-        <button className="bg-white py-2 rounded font-semibold">Google</button>
-        <button className="bg-white py-2 rounded font-semibold">YAHOO!</button>
+        <button className="h-[56px] flex justify-center items-center bg-white py-2 rounded font-semibold">
+          <img className="block h-[24px] w-[33%]" src={`${BASE_URL}ic-facebook-logotype.svg`} alt="facebook" />
+        </button>
+        <button className="h-[56px] flex justify-center items-center bg-white py-2 rounded font-semibold">
+          <img className="block h-[36px] w-[33%]" src={`${BASE_URL}ic-google.svg`} alt="Google" />
+        </button>
+        <button className="h-[56px] flex justify-center items-center bg-white py-2 rounded font-semibold">
+          <img className="block h-[24px] w-[33%]" src={`${BASE_URL}ic-yahoo.svg`} alt="YAHOO!" />
+        </button>
       </div>
     </div>
   </div>

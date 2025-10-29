@@ -2,65 +2,76 @@ import { NavLink } from "react-router-dom";
 import { Form } from "react-router-dom";
 import { useState } from "react";
 const BASE_URL = import.meta.env.BASE_URL || "/";
+import { addCartItem } from "../data/cart";
 
 export default function IndexPage() {
-  const products = [
+  const [products, setProducts] = useState([
     {
-      id: "product-1",
-      title: "焦糖馬卡龍",
+      id: "1",
+      title: "焦糖馬卡龍1",
       label: "本日精選",
       image: "photo-1.avif",
       price: 450,
       currency: "NT$",
-      liked: false
+      liked: false,
     },
     {
-      id: "product-2",
-      title: "焦糖馬卡龍",
+      id: "2",
+      title: "焦糖馬卡龍2",
       label: "本日精選",
       image: "photo-2.avif",
       price: 450,
       currency: "NT$",
-      liked: false
+      liked: true,
     },
     {
-      id: "product-3",
-      title: "焦糖馬卡龍",
+      id: "3",
+      title: "焦糖馬卡龍3",
       label: "本日精選",
       image: "photo-3.avif",
       price: 450,
       currency: "NT$",
-      liked: false
-    }
-  ];
+      liked: false,
+    },
+  ]);
 
   const [cart, setCart] = useState([]);
 
   // 收藏狀態：以商品 id 存在集合中代表已收藏
-  const [likedIds, setLikedIds] = useState(new Set());
+  // const [likedIds, setLikedIds] = useState(new Set());
 
-  const toggleLike = (id) => {
-    setLikedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
+  const toggleLike = (p) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((prod) =>
+        prod.id === p.id ? { ...prod, liked: !prod.liked } : prod
+      )
+    );
   };
 
 
-  function addToCart(product) {
-    setCart((prev) => {
-      console.log("prev:", prev);
+  // function addToCart(product) {
+  //   setCart((prev) => {
+  //     console.log("prev:", prev);
 
-      const found = prev.find((p) => p.id === product.id);
-      if (found) {
-        return prev.map((p) => (p.id === product.id ? { ...p, qty: p.qty + 1 } : p));
-      }
-      return [...prev, { ...product, qty: 1 }];
+  //     const found = prev.find((p) => p.id === product.id);
+  //     if (found) {
+  //       return prev.map((p) => (p.id === product.id ? { ...p, qty: p.qty + 1 } : p));
+  //     }
+  //     return [...prev, { ...product, qty: 1 }];
+  //   });
+  // }
+
+  // 加入購物車（同步至全域 cart 模組）
+  function addToCart(p) {
+    console.log("addToCart:", p);
+
+    addCartItem({
+      id: p.id,
+      title: p.title,
+      label: p.label,
+      price: p.price,
+      currency: p.currency,
+      image: p.image,
     });
   }
 
@@ -284,12 +295,12 @@ export default function IndexPage() {
               className="relative overflow-hidden border border-[#EAF0ED] bg-white w-[calc(33%-16.6px)] max-sm:w-full flex flex-col"
             >
 
+              {/* 本日精選 */}
               <span className="absolute [writing-mode:vertical-rl] flex tracking-[4px] leading-[36px] left-[20px] top-0 bg-[#3F5D45] text-white text-[16px] font-[600] px-[10px] pb-[20px] ">{p.label}</span>
               {/* 收藏按鈕（搭配 products 切換） */}
               <button
                 type="button"
-                onClick={() => toggleLike(p.id)}
-                aria-pressed={likedIds.has(p.id)}
+                onClick={() => toggleLike(p)}
                 className={`absolute top-[10px] right-[20px] inline-flex  items-center justify-center transition-transform hover:scale-120  active:ring-[#3F5D45]/40 `}
               >
                 <svg
@@ -300,12 +311,13 @@ export default function IndexPage() {
                 >
                   <path
                     d="M21 8.25c0-2.485-2.098-4.5-4.688-4.5-1.828 0-3.416.99-4.312 2.454C11.104 4.74 9.516 3.75 7.688 3.75 5.098 3.75 3 5.765 3 8.25c0 7.22 9 11.25 9 11.25s9-4.03 9-11.25z"
-                    fill={likedIds.has(p.id) ? 'currentColor' : 'none'}
+                    fill={p.liked === true ? 'currentColor' : 'none'}
                     stroke="currentColor"
                     strokeWidth="1.5"
                   />
                 </svg>
               </button>
+
               <div className="w-full h-full bg-gray-100">
                 <img
                   src={BASE_URL + p.image}
@@ -332,6 +344,24 @@ export default function IndexPage() {
           ))}
         </div>
       </div>
+
+      {/* 把cart 資料印出來 */}
+      {
+        cart.map((item) => (
+          <div key={item.id}>
+            {/* 印出名字 */}
+            <p>{item.name}名稱: {item.title}</p>
+            <p>{item.name}數量: {item.qty}</p>
+            <div className="text-[20px] font-[500]">
+              {item.currency} {item.unitPrice} x {item.qty} = {item.currency} {item.price * item.qty}
+            </div>
+          </div>
+        ))
+      }
+
+
+
+
     </section>
   );
 }
