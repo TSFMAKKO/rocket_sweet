@@ -2,7 +2,7 @@
 
 這是以 Vite 建立的 React 專案，已整合：
 
-- React Router 路由（/ 與 /about）
+- React Router 路由
 - Tailwind CSS v4（使用 `@tailwindcss/vite` 外掛與 `@import "tailwindcss"`）
 
 ## 快速開始
@@ -28,9 +28,6 @@ npm run preview
 ## 路由
 
 本專案使用 Hash 路由（`createHashRouter`），適合 GitHub Pages 等靜態託管：
-
-- `#/` Index 頁面
-- `#/about` About 頁面
 
 ## 樣式
 
