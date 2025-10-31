@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
-import { Form } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const BASE_URL = import.meta.env.BASE_URL || "/";
 import { addCartItem } from "../data/cart";
 
 export default function IndexPage() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([
     {
       id: "1",
@@ -35,7 +35,7 @@ export default function IndexPage() {
     },
   ]);
 
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
 
   // 收藏狀態：以商品 id 存在集合中代表已收藏
   // const [likedIds, setLikedIds] = useState(new Set());
@@ -73,6 +73,8 @@ export default function IndexPage() {
       currency: p.currency,
       image: p.image,
     });
+    // 導向購物車頁
+    navigate("/cart");
   }
 
 
@@ -345,19 +347,7 @@ export default function IndexPage() {
         </div>
       </div>
 
-      {/* 把cart 資料印出來 */}
-      {
-        cart.map((item) => (
-          <div key={item.id}>
-            {/* 印出名字 */}
-            <p>{item.name}名稱: {item.title}</p>
-            <p>{item.name}數量: {item.qty}</p>
-            <div className="text-[20px] font-[500]">
-              {item.currency} {item.unitPrice} x {item.qty} = {item.currency} {item.price * item.qty}
-            </div>
-          </div>
-        ))
-      }
+      {/* cart 調試輸出已移除 */}
 
 
 

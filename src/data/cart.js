@@ -1,33 +1,6 @@
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
 export let CART_ITEMS = [
-  // {
-  //   id: "1",
-  //   name: "焦糖馬卡龍1",
-  //   label: "本日精選",
-  //   price: 450,
-  //   currency: "NT$",
-  //   qty: 2,
-  //   image: BASE_URL + "photo-1514517220017-8ce97a34a7b6.avif",
-  // },
-  // {
-  //   id: "2",
-  //   name: "焦糖馬卡龍2",
-  //   label: "本日精選",
-  //   price: 450,
-  //   currency: "NT$",
-  //   qty: 3,
-  //   image: BASE_URL + "photo-1473256599800-b48c7c88cd7e.avif",
-  // },
-  // {
-  //   id: "",
-  //   name: "焦糖馬卡龍3",
-  //   label: "本日精選",
-  //   price: 450,
-  //   currency: "NT$",
-  //   qty: 2,
-  //   image: BASE_URL + "photo-1490474504059-bf2db5ab2348.avif",
-  // },
 ];
 
 export const SHIPPING_FEE = 300;

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { addCartItem } from "../data/cart";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
@@ -218,6 +219,7 @@ function Pagination({ current, total }) {
 }
 
 export default function ProductPage() {
+  const navigate = useNavigate();
 
   // 產生左側篩選清單（依產品的 label 自動統計）
   // 輸出格式：[{ name: '所有甜點', count: 6 }, { name: '本日精選', count: 3 }, ...]
@@ -296,6 +298,8 @@ export default function ProductPage() {
       currency: p.currency,
       image: p.image,
     });
+    // 導向購物車頁
+    navigate("/cart");
   }
 
   // 收藏狀態：以商品 id 存在集合中代表已收藏
