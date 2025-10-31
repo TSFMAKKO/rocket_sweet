@@ -5,11 +5,16 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  // 統一客製化 NavLink 的 active 樣式（桌機與手機共用）
+  const navLinkClasses = ({ isActive }) =>
+    `${isActive ? "text-gray-600 font-medium underline underline-offset-8 decoration-2" : "text-gray-700 hover:text-gray-600 hover:underline hover:underline-offset-8"} py-[20px] transition-colors`;
+  
   return (
     <header className="mx-auto max-w-[940px] relative w-full px-[12px] py-3 z-999">
       <div className=" flex items-center justify-between max-sm:hidden ">
         <NavLink
           to="/"
+          end
           className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight py-[20px] "
         >
           <img
@@ -18,47 +23,23 @@ export default function Header() {
             className="h-[38px] w-auto"
           />
         </NavLink>
+
         <nav className="flex gap-x-[80px] text-sm items-center text-[20px] leading-[1.5]">
           <div className="flex gap-x-[60px]">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                (isActive
-                  ? "text-blue-600 font-medium"
-                  : "text-gray-700 hover:text-blue-600") + " py-[20px]"
-              }
-            >
+            <NavLink to="/" end className={navLinkClasses}>
               首頁
             </NavLink>
-            <NavLink
-              to="/product"
-              className={({ isActive }) =>
-                (isActive
-                  ? "text-blue-600 font-medium"
-                  : "text-gray-700 hover:text-blue-600") + " py-[20px]"
-              }
-            >
+            <NavLink to="/product" className={navLinkClasses}>
               甜點
             </NavLink>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                `${
-                  isActive
-                    ? "text-blue-600 font-medium"
-                    : "text-gray-700 hover:text-blue-600"
-                } py-[20px]`
-              }
-            >
+            <NavLink to="/login" className={navLinkClasses}>
               登入
             </NavLink>
           </div>
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              (isActive
-                ? "text-blue-600 font-medium"
-                : "text-gray-700 hover:text-blue-600") + " py-[20px]"
+              `${isActive ? "text-blue-600 ring-2 ring-blue-500/30 rounded-full" : "text-gray-700 hover:text-blue-600"} py-[20px] inline-flex items-center`
             }
           >
             <img
@@ -87,6 +68,7 @@ export default function Header() {
 
           <NavLink
             to="/"
+            end
             className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-[red]"
           >
             <img
@@ -99,7 +81,7 @@ export default function Header() {
             to="/cart"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-medium"
+                ? "text-blue-600 ring-2 ring-blue-500/30 rounded-full"
                 : "text-gray-700 hover:text-blue-600"
             }
           >
@@ -118,8 +100,11 @@ export default function Header() {
           >
             <NavLink
               to="/"
+              end
               onClick={() => setIsOpen(false)}
-              className="py-[20px] hover:text-blue-600 block w-full text-center"
+              className={({ isActive }) =>
+                `${isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"} py-[20px] block w-full text-center`
+              }
             >
               首頁
             </NavLink>
@@ -127,14 +112,18 @@ export default function Header() {
             <NavLink
               to="/product"
               onClick={() => setIsOpen(false)}
-              className="py-[20px] hover:text-blue-600 block w-full text-center"
+              className={({ isActive }) =>
+                `${isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"} py-[20px] block w-full text-center`
+              }
             >
               甜點
             </NavLink>
             <NavLink
               to="/login"
               onClick={() => setIsOpen(false)}
-              className="py-[20px] hover:text-blue-600 block w-full text-center"
+              className={({ isActive }) =>
+                `${isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"} py-[20px] block w-full text-center`
+              }
             >
               登入
             </NavLink>
