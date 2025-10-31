@@ -1,17 +1,4 @@
-// 購物車靜態資料（你確認後再做版型）
-// 圖片皆來自 public 資料夾，會依照 Vite 的 BASE_URL 自動拼接
-
 const BASE_URL = import.meta.env.BASE_URL || "/";
-
-// 單筆商品項目範例格式
-// {
-//   id: string,
-//   name: string,
-//   price: number,    // 單價
-//   currency: string,     // 幣別顯示用，如 'NT$'
-//   qty: number,          // 數量
-//   image: string         // 完整圖片 URL（已拼 BASE_URL）
-// }
 
 export let CART_ITEMS = [
   // {

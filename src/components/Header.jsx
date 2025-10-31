@@ -8,6 +8,7 @@ export default function Header() {
   // 統一客製化 NavLink 的 active 樣式（桌機與手機共用）
   const navLinkClasses = ({ isActive }) =>
     `${isActive ? "text-gray-600 font-medium underline underline-offset-8 decoration-2" : "text-gray-700 hover:text-gray-600 hover:underline hover:underline-offset-8"} py-[20px] transition-colors`;
+  
   return (
     <header className="mx-auto max-w-[940px] relative w-full px-[12px] py-3 z-999">
       <div className=" flex items-center justify-between max-sm:hidden ">

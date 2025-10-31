@@ -4,8 +4,6 @@ import { addCartItem } from "../data/cart";
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
 
-
-
 // 使用者提供的資料（將圖片對應到現有 public 圖檔）
 const PRODUCT_DATA = {
   category: "甜點類別",
