@@ -171,7 +171,7 @@ function ProductCard({ p, onAdd, liked, onToggleLike }) {
       </div>
 
       {/* 加入購物車 */}
-      <button onClick={() => onAdd?.(p)} className="w-full bg-[#EAF0ED] hover:bg-[#dbe4dd] text-[#3F5D45] py-[12px]">
+      <button onClick={() => onAdd?.(p)} className="w-full bg-[#EAF0ED] text-[#3F5D45] py-[12px] hover:text-[#EAF0ED] hover:bg-[#3F5D45] cursor-pointer transition-colors">
         加入購物車
       </button>
     </div>

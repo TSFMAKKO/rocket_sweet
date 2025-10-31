@@ -301,7 +301,7 @@ export default function IndexPage() {
               <button
                 type="button"
                 onClick={() => toggleLike(p)}
-                className={`absolute top-[10px] right-[20px] inline-flex  items-center justify-center transition-transform hover:scale-120  active:ring-[#3F5D45]/40 `}
+                className={`absolute top-[10px] right-[20px] inline-flex  items-center justify-center transition-transform hover:scale-120  active:ring-[#3F5D45]/40  `}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -335,7 +335,7 @@ export default function IndexPage() {
               <div className="flex items-center justify-center">
                 <button
                   onClick={() => addToCart(p)}
-                  className="w-full bg-[#EAF0ED] text-[#3F5D45] text-[24px] font-[600] py-[16px] hover:opacity-90"
+                  className="w-full bg-[#EAF0ED] text-[#3F5D45] text-[24px] font-[600] py-[16px] hover:opacity-90 hover:text-[#EAF0ED] hover:bg-[#3F5D45] cursor-pointer transition-colors"
                 >
                   加入購物車
                 </button>
