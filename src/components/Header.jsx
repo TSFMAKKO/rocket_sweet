@@ -39,13 +39,13 @@ export default function Header() {
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              `${isActive ? "text-blue-600 ring-2 ring-blue-500/30 rounded-full" : "text-gray-700 hover:text-blue-600"} py-[20px] inline-flex items-center`
+              `${isActive ? "" : "hover:opacity-90"} py-[20px] inline-flex items-center focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0`
             }
           >
             <img
               src={BASE_URL + "shopping_cart.png"}
               alt="購物車"
-              className="h-[38px] w-auto"
+              className="h-[38px] w-auto "
             />
           </NavLink>
         </nav>
@@ -80,9 +80,7 @@ export default function Header() {
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              isActive
-                ? "text-blue-600 ring-2 ring-blue-500/30 rounded-full"
-                : "text-gray-700 hover:text-blue-600"
+              isActive ? "" : "hover:opacity-90 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
             }
           >
             <img

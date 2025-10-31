@@ -111,7 +111,7 @@ export default function IndexPage() {
             className="w-[260px] h-[256px] absolute inset-0 object-cover blur-[5px] opacity-80"
           />
           <div className="absolute inset-0 bg-[#3F5D45]/80"></div>
-          <span className="relative [writing-mode:vertical-rl] [text-orientation:upright] inline-block leading-[34px] text-white">
+          <span className="relative [writing-mode:vertical-rl] [text-orientation:upright] inline-flex leading-[34px] justify-center items-center text-white w-full h-full cursor-pointer hover:text-green-800 hover:font-[600] hover:bg-[#FFE180]/80">
             人氣推薦
           </span>
         </div>
